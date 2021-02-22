@@ -4,8 +4,8 @@ from turbocode import turbo
 import sys
 from get_args import get_args
 import time
-from models2 import DNCNN_train,DNCNN_predict,errors
-from utils2 import generateData2
+from models import DNCNN_train,DNCNN_predict,errors
+from utils2 import generateData
 class Logger(object):
     def __init__(self, filename, stream=sys.stdout):
         self.terminal = stream
@@ -29,19 +29,18 @@ if __name__=='__main__':
     args = get_args()
     print(args)
 
-    turbocode=turbo(args)
-    channel=1
-    # train_input,train_noise=generateData2(args,channel,'train')
-    # valid_input,valid_noise=generateData2(args,channel,'test')
+    # turbocode=turbo(args)
+    # train_input,train_noise=generateData(args,'train')
+    # valid_input,valid_noise=generateData(args,'test')
     # train_label=train_input-train_noise
     # valid_label=valid_input-valid_noise
     # DNCNN_train(args,train_input,train_label,valid_input,valid_label,args.channel,identity)
-    identity=954853
-    test_input,test_noise=generateData2(args,channel,'test')
+    identity=542302
+    test_input,test_noise=generateData(args,'test')
     test_label=test_input-test_noise
     test_output=DNCNN_predict(args,test_input,args.channel,identity)
     denoisesig=np.round(test_output)
-    test_ber=np.sum(np.logical_xor(denoisesig,test_label),axis=(0,1,2,3))/(args.num_block*channel*args.block_len*args.code_rate_k)
+    test_ber=np.sum(np.logical_xor(denoisesig,test_label),axis=(0,1,2))/(args.num_block*args.block_len*args.code_rate_k)
     print("===>Test set BER ",float(test_ber))
 
     

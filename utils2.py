@@ -27,7 +27,7 @@ def getnoisesigma(snr_low=0.0,snr_high=0.0):
 	this_sigma = (this_sigma_low - this_sigma_high) * np.random.rand(1) + this_sigma_high  #每个batch添加相同的噪声
 	this_snr=-20.0 * np.log10(this_sigma)
 	return (this_sigma,this_snr)
-def generateData(args,channel,mode):
+def generateData2(args,channel,mode):
 	if mode=="train":
 		batchnum=args.num_block
 	elif mode=="test":
@@ -41,7 +41,20 @@ def generateData(args,channel,mode):
 	received_codes=codes + fwd_noise
 	inputdata=received_codes
 	return (inputdata,fwd_noise)
-
+def generateData(args,mode):
+	if mode=="train":
+		batchnum=args.num_block
+	elif mode=="test":
+		batchnum=args.num_test_block
+	X_train=np.random.randint(0,2,(batchnum,args.block_len, args.code_rate_k))
+	noise_shape = (batchnum,args.block_len, args.code_rate_k)
+	this_sigma,this_snr=getnoisesigma(args.train_channel_low,args.train_channel_high)
+	# print("batch_idx=",batch_idx,"noise sigma=",this_sigma,"this_snr=",this_snr)
+	fwd_noise  = generate_noise(noise_shape, args, this_sigma)
+	codes=X_train
+	received_codes=codes + fwd_noise
+	inputdata=received_codes
+	return (inputdata,fwd_noise)
 def trainer(args,model,epoch,optimizer,criterion,turbo,use_cuda=False,verbose=True):
 	device = torch.device("cuda" if use_cuda else "cpu")
 	model.train()

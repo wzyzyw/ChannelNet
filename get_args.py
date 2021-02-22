@@ -24,7 +24,7 @@ def get_args():
     parser.add_argument('-init_nw_weight', type=str, default='./models/torch_model_decoder_036718.pt')
 
     # code rate is k/n, so that enable multiple code rates. This has to match the encoder/decoder nw structure.
-    parser.add_argument('-code_rate_k', type=int, default=5)
+    parser.add_argument('-code_rate_k', type=int, default=1)
     parser.add_argument('-code_rate_n', type=int, default=3)
 
     ################################################################
