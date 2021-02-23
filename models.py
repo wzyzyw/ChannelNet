@@ -61,10 +61,10 @@ def DNCNN_model (args):
         x = Activation('relu')(x)   
     # last layer, Conv
     x = Conv1D(filters=args.code_rate_n, kernel_size=args.kernel_size, strides=1, padding='same')(x)
-    x = Subtract()([inpt, x])   # input - noise
+    # x = Subtract()([inpt, x])   # input - noise
     model = Model(inputs=inpt, outputs=x)
     adam = Adam(lr=args.lr, beta_1=0.9, beta_2=0.999, epsilon=1e-8) 
-    model.compile(optimizer=adam, loss='mean_squared_error', metrics=[errors])  
+    model.compile(optimizer=adam, loss='mean_squared_error', metrics=['mean_squared_error'])  
     # model.compile(optimizer=adam, loss='binary_crossentropy', metrics=['binary_crossentropy'])     
     
     return model

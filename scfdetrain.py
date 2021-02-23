@@ -44,14 +44,21 @@ if __name__=='__main__':
     X_valid_data,valid_input,valid_noise=generateEncodeData(args,'test',myturbo)
     train_label=train_input-train_noise
     valid_label=valid_input-valid_noise
-    DNCNN_train(args,train_input,train_label,valid_input,valid_label,args.channel,identity)
+    DNCNN_train(args,train_input,train_noise,valid_input,valid_noise,args.channel,identity)
     # # identity=542302
     X_test_data,test_input,test_noise=generateEncodeData(args,'test',myturbo)
     test_label=test_input-test_noise
     test_output=DNCNN_predict(args,test_input,args.channel,identity)
+    denoisesig=test_input-test_output
     # # channel decode
     # test_label_decodebits=channeldecode(args,myturbo,test_label,'test')
     # test_output_decodebits=channeldecode(args,myturbo,test_output,'test')
-    denoisesig=np.round(test_output)
+    denoisesig=np.round(denoisesig)
     test_ber=np.sum(np.logical_xor(denoisesig,test_label),axis=(0,1,2))/(args.num_block*args.block_len*args.code_rate_n)
     print("===>Test set BER ",float(test_ber))
+
+    
+
+        
+    
+

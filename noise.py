@@ -61,12 +61,12 @@ class bikappa():
 bikappaobj=bikappa()
 def generate_noise(noise_shape, args, this_sigma=0.0):
     if args.channel == 'awgn':
-        fwd_noise  = this_sigma * np.random.randn(noise_shape[0],noise_shape[1],noise_shape[2])
+        fwd_noise  = this_sigma * np.random.randn(noise_shape[0],noise_shape[1])
         # 注意调整noise形状对于二维数据和一维数据
     elif args.channel == 'bikappa':
-        noise_num=noise_shape[0]*noise_shape[1]*noise_shape[2]
+        noise_num=noise_shape[0]*noise_shape[1]
         tmp=bikappaobj.getbikappa((noise_num,1))
-        fwd_noise=tmp.reshape((noise_shape[0],noise_shape[1],noise_shape[2]))
+        fwd_noise=tmp.reshape((noise_shape[0],noise_shape[1]))
     else:
         # Unspecific channel, use AWGN channel.
         fwd_noise  = this_sigma * np.random.randn(noise_shape)
