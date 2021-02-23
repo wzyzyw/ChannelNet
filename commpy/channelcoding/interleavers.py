@@ -7,7 +7,7 @@
 
 from numpy import array, arange, zeros
 from numpy.random import mtrand
-
+import numpy as np
 __all__ = ['RandInterlv']
 
 class _Interleaver:
@@ -26,6 +26,7 @@ class _Interleaver:
             Interleaved output data.
 
         """
+        self.p_array=self.p_array.astype(np.int32)
         out_array = array(list(map(lambda x: in_array[x], self.p_array)))
         return out_array
 

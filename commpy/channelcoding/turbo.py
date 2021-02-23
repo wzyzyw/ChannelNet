@@ -6,9 +6,9 @@
 """ Turbo Codes """
 
 from numpy import array, append, zeros, exp, pi, log, empty
+import numpy as np
 from commpy.channelcoding import Trellis, conv_encode
 from commpy.utilities import dec2bitarray, bitarray2dec
-import numpy as np
 #from commpy.channelcoding.map_c import backward_recursion, forward_recursion_decoding
 
 def turbo_encode(msg_bits, trellis1, trellis2, interleaver):
@@ -491,7 +491,7 @@ def hazzys_g_turbo_decode(sys_symbols, non_sys_symbols_1, non_sys_symbols_2, tre
         L_ext_1 = L_ext_1 - L_int_1
         L_ext_1 = L_ext_1 - weighted_sys
 
-        L_ext_1 = L_ext_1*0.9*np.exp(-0.01*np.abs(L_ext_1))
+        L_ext_1 = L_ext_1*0.9*exp(-0.01*np.abs(L_ext_1))
         L_int_2 = interleaver.interlv(L_ext_1)
 
 

@@ -1,0 +1,549 @@
+注：
+python turbo编码，固定15db训练结果，noise_shape有bug
+Namespace(M=2, batch_size=100, block_len=100, channel='awgn', code_rate_k=1, code_rate_n=3, dropout=0.5, enc1=7, enc2=5, enc_clipping='both', enc_grad_limit=0.01, enc_quantize_level=2, enc_value_limit=1.0, feedback=7, init_nw_weight='./models/torch_model_decoder_036718.pt', is_parallel=0, is_train=True, kernel_size=3, lr=0.0001, momentum=0.9, no_cuda=False, num_block=7000, num_epoch=200, num_iteration=6, num_layer=14, num_test_block=3000, optimizer='adam', precompute_norm_stats=False, print_pos_ber=False, print_pos_power=False, print_test_traj=False, rec_quantize=False, rec_quantize_level=2, rec_quantize_limit=1.0, snr_points=9, snr_test_end=15.0, snr_test_start=15.0, test_channel_mode='block_norm', test_ratio=1, train_channel_high=15.0, train_channel_low=15.0, train_channel_mode='block_norm')
+[Convolutional Code Codec] Encoder M  [2]  Generator Matrix  [[7 5]]  Feedback  7
+__________________________________________________________________________________________________
+Layer (type)                    Output Shape         Param #     Connected to                     
+==================================================================================================
+input_1 (InputLayer)            (None, 100, 3)       0                                            
+__________________________________________________________________________________________________
+conv1d_1 (Conv1D)               (None, 100, 3)       30          input_1[0][0]                    
+__________________________________________________________________________________________________
+activation_1 (Activation)       (None, 100, 3)       0           conv1d_1[0][0]                   
+__________________________________________________________________________________________________
+conv1d_2 (Conv1D)               (None, 100, 64)      640         activation_1[0][0]               
+__________________________________________________________________________________________________
+batch_normalization_1 (BatchNor (None, 100, 64)      256         conv1d_2[0][0]                   
+__________________________________________________________________________________________________
+activation_2 (Activation)       (None, 100, 64)      0           batch_normalization_1[0][0]      
+__________________________________________________________________________________________________
+conv1d_3 (Conv1D)               (None, 100, 64)      12352       activation_2[0][0]               
+__________________________________________________________________________________________________
+batch_normalization_2 (BatchNor (None, 100, 64)      256         conv1d_3[0][0]                   
+__________________________________________________________________________________________________
+activation_3 (Activation)       (None, 100, 64)      0           batch_normalization_2[0][0]      
+__________________________________________________________________________________________________
+conv1d_4 (Conv1D)               (None, 100, 64)      12352       activation_3[0][0]               
+__________________________________________________________________________________________________
+batch_normalization_3 (BatchNor (None, 100, 64)      256         conv1d_4[0][0]                   
+__________________________________________________________________________________________________
+activation_4 (Activation)       (None, 100, 64)      0           batch_normalization_3[0][0]      
+__________________________________________________________________________________________________
+conv1d_5 (Conv1D)               (None, 100, 64)      12352       activation_4[0][0]               
+__________________________________________________________________________________________________
+batch_normalization_4 (BatchNor (None, 100, 64)      256         conv1d_5[0][0]                   
+__________________________________________________________________________________________________
+activation_5 (Activation)       (None, 100, 64)      0           batch_normalization_4[0][0]      
+__________________________________________________________________________________________________
+conv1d_6 (Conv1D)               (None, 100, 64)      12352       activation_5[0][0]               
+__________________________________________________________________________________________________
+batch_normalization_5 (BatchNor (None, 100, 64)      256         conv1d_6[0][0]                   
+__________________________________________________________________________________________________
+activation_6 (Activation)       (None, 100, 64)      0           batch_normalization_5[0][0]      
+__________________________________________________________________________________________________
+conv1d_7 (Conv1D)               (None, 100, 64)      12352       activation_6[0][0]               
+__________________________________________________________________________________________________
+batch_normalization_6 (BatchNor (None, 100, 64)      256         conv1d_7[0][0]                   
+__________________________________________________________________________________________________
+activation_7 (Activation)       (None, 100, 64)      0           batch_normalization_6[0][0]      
+__________________________________________________________________________________________________
+conv1d_8 (Conv1D)               (None, 100, 64)      12352       activation_7[0][0]               
+__________________________________________________________________________________________________
+batch_normalization_7 (BatchNor (None, 100, 64)      256         conv1d_8[0][0]                   
+__________________________________________________________________________________________________
+activation_8 (Activation)       (None, 100, 64)      0           batch_normalization_7[0][0]      
+__________________________________________________________________________________________________
+conv1d_9 (Conv1D)               (None, 100, 64)      12352       activation_8[0][0]               
+__________________________________________________________________________________________________
+batch_normalization_8 (BatchNor (None, 100, 64)      256         conv1d_9[0][0]                   
+__________________________________________________________________________________________________
+activation_9 (Activation)       (None, 100, 64)      0           batch_normalization_8[0][0]      
+__________________________________________________________________________________________________
+conv1d_10 (Conv1D)              (None, 100, 64)      12352       activation_9[0][0]               
+__________________________________________________________________________________________________
+batch_normalization_9 (BatchNor (None, 100, 64)      256         conv1d_10[0][0]                  
+__________________________________________________________________________________________________
+activation_10 (Activation)      (None, 100, 64)      0           batch_normalization_9[0][0]      
+__________________________________________________________________________________________________
+conv1d_11 (Conv1D)              (None, 100, 64)      12352       activation_10[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_10 (BatchNo (None, 100, 64)      256         conv1d_11[0][0]                  
+__________________________________________________________________________________________________
+activation_11 (Activation)      (None, 100, 64)      0           batch_normalization_10[0][0]     
+__________________________________________________________________________________________________
+conv1d_12 (Conv1D)              (None, 100, 64)      12352       activation_11[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_11 (BatchNo (None, 100, 64)      256         conv1d_12[0][0]                  
+__________________________________________________________________________________________________
+activation_12 (Activation)      (None, 100, 64)      0           batch_normalization_11[0][0]     
+__________________________________________________________________________________________________
+conv1d_13 (Conv1D)              (None, 100, 64)      12352       activation_12[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_12 (BatchNo (None, 100, 64)      256         conv1d_13[0][0]                  
+__________________________________________________________________________________________________
+activation_13 (Activation)      (None, 100, 64)      0           batch_normalization_12[0][0]     
+__________________________________________________________________________________________________
+conv1d_14 (Conv1D)              (None, 100, 64)      12352       activation_13[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_13 (BatchNo (None, 100, 64)      256         conv1d_14[0][0]                  
+__________________________________________________________________________________________________
+activation_14 (Activation)      (None, 100, 64)      0           batch_normalization_13[0][0]     
+__________________________________________________________________________________________________
+conv1d_15 (Conv1D)              (None, 100, 64)      12352       activation_14[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_14 (BatchNo (None, 100, 64)      256         conv1d_15[0][0]                  
+__________________________________________________________________________________________________
+activation_15 (Activation)      (None, 100, 64)      0           batch_normalization_14[0][0]     
+__________________________________________________________________________________________________
+conv1d_16 (Conv1D)              (None, 100, 3)       579         activation_15[0][0]              
+__________________________________________________________________________________________________
+subtract_1 (Subtract)           (None, 100, 3)       0           input_1[0][0]                    
+                                                                 conv1d_16[0][0]                  
+==================================================================================================
+Total params: 165,409
+Trainable params: 163,617
+Non-trainable params: 1,792
+__________________________________________________________________________________________________
+None
+Train on 7000 samples, validate on 3000 samples
+Epoch 1/200
+ - 17s - loss: 0.5203 - errors: 0.4390 - val_loss: 3.9966 - val_errors: 0.6253
+Epoch 2/200
+ - 4s - loss: 0.0863 - errors: 0.0817 - val_loss: 0.3019 - val_errors: 0.2408
+Epoch 3/200
+ - 4s - loss: 0.0449 - errors: 0.0213 - val_loss: 0.0843 - val_errors: 0.0734
+Epoch 4/200
+ - 4s - loss: 0.0384 - errors: 0.0125 - val_loss: 0.0514 - val_errors: 0.0302
+Epoch 5/200
+ - 4s - loss: 0.0358 - errors: 0.0093 - val_loss: 0.0416 - val_errors: 0.0169
+Epoch 6/200
+ - 4s - loss: 0.0345 - errors: 0.0078 - val_loss: 0.0375 - val_errors: 0.0115
+Epoch 7/200
+ - 4s - loss: 0.0337 - errors: 0.0070 - val_loss: 0.0355 - val_errors: 0.0091
+Epoch 8/200
+ - 4s - loss: 0.0332 - errors: 0.0065 - val_loss: 0.0344 - val_errors: 0.0078
+Epoch 9/200
+ - 4s - loss: 0.0328 - errors: 0.0061 - val_loss: 0.0336 - val_errors: 0.0069
+Epoch 10/200
+ - 4s - loss: 0.0325 - errors: 0.0058 - val_loss: 0.0330 - val_errors: 0.0063
+
+Epoch 00010: saving model to ./tmp/weights_10-0.03.h5
+Epoch 11/200
+ - 4s - loss: 0.0323 - errors: 0.0056 - val_loss: 0.0326 - val_errors: 0.0059
+Epoch 12/200
+ - 4s - loss: 0.0321 - errors: 0.0055 - val_loss: 0.0324 - val_errors: 0.0057
+Epoch 13/200
+ - 4s - loss: 0.0320 - errors: 0.0054 - val_loss: 0.0322 - val_errors: 0.0055
+Epoch 14/200
+ - 4s - loss: 0.0318 - errors: 0.0053 - val_loss: 0.0321 - val_errors: 0.0054
+Epoch 15/200
+ - 4s - loss: 0.0317 - errors: 0.0052 - val_loss: 0.0319 - val_errors: 0.0052
+Epoch 16/200
+ - 4s - loss: 0.0316 - errors: 0.0051 - val_loss: 0.0317 - val_errors: 0.0051
+Epoch 17/200
+ - 4s - loss: 0.0315 - errors: 0.0050 - val_loss: 0.0316 - val_errors: 0.0050
+Epoch 18/200
+ - 4s - loss: 0.0314 - errors: 0.0049 - val_loss: 0.0315 - val_errors: 0.0050
+Epoch 19/200
+ - 4s - loss: 0.0313 - errors: 0.0049 - val_loss: 0.0314 - val_errors: 0.0049
+Epoch 20/200
+ - 4s - loss: 0.0312 - errors: 0.0048 - val_loss: 0.0313 - val_errors: 0.0048
+
+Epoch 00020: saving model to ./tmp/weights_20-0.03.h5
+Epoch 21/200
+ - 4s - loss: 0.0311 - errors: 0.0047 - val_loss: 0.0312 - val_errors: 0.0048
+Epoch 22/200
+ - 4s - loss: 0.0310 - errors: 0.0046 - val_loss: 0.0311 - val_errors: 0.0047
+Epoch 23/200
+ - 5s - loss: 0.0309 - errors: 0.0046 - val_loss: 0.0310 - val_errors: 0.0047
+Epoch 24/200
+ - 5s - loss: 0.0308 - errors: 0.0045 - val_loss: 0.0309 - val_errors: 0.0046
+Epoch 25/200
+ - 5s - loss: 0.0307 - errors: 0.0045 - val_loss: 0.0308 - val_errors: 0.0045
+Epoch 26/200
+ - 5s - loss: 0.0306 - errors: 0.0044 - val_loss: 0.0307 - val_errors: 0.0045
+Epoch 27/200
+ - 5s - loss: 0.0306 - errors: 0.0044 - val_loss: 0.0307 - val_errors: 0.0044
+Epoch 28/200
+ - 5s - loss: 0.0305 - errors: 0.0043 - val_loss: 0.0306 - val_errors: 0.0044
+Epoch 29/200
+ - 5s - loss: 0.0304 - errors: 0.0043 - val_loss: 0.0305 - val_errors: 0.0043
+Epoch 30/200
+ - 5s - loss: 0.0303 - errors: 0.0043 - val_loss: 0.0304 - val_errors: 0.0042
+
+Epoch 00030: saving model to ./tmp/weights_30-0.03.h5
+Epoch 31/200
+ - 5s - loss: 0.0302 - errors: 0.0042 - val_loss: 0.0303 - val_errors: 0.0042
+Epoch 32/200
+ - 5s - loss: 0.0301 - errors: 0.0041 - val_loss: 0.0302 - val_errors: 0.0042
+Epoch 33/200
+ - 5s - loss: 0.0300 - errors: 0.0041 - val_loss: 0.0302 - val_errors: 0.0041
+Epoch 34/200
+ - 5s - loss: 0.0300 - errors: 0.0041 - val_loss: 0.0301 - val_errors: 0.0041
+Epoch 35/200
+ - 5s - loss: 0.0299 - errors: 0.0040 - val_loss: 0.0300 - val_errors: 0.0040
+Epoch 36/200
+ - 5s - loss: 0.0298 - errors: 0.0040 - val_loss: 0.0299 - val_errors: 0.0040
+Epoch 37/200
+ - 5s - loss: 0.0297 - errors: 0.0039 - val_loss: 0.0298 - val_errors: 0.0039
+Epoch 38/200
+ - 5s - loss: 0.0296 - errors: 0.0039 - val_loss: 0.0297 - val_errors: 0.0039
+Epoch 39/200
+ - 5s - loss: 0.0295 - errors: 0.0038 - val_loss: 0.0296 - val_errors: 0.0038
+Epoch 40/200
+ - 5s - loss: 0.0294 - errors: 0.0038 - val_loss: 0.0295 - val_errors: 0.0038
+
+Epoch 00040: saving model to ./tmp/weights_40-0.03.h5
+Epoch 41/200
+ - 5s - loss: 0.0293 - errors: 0.0037 - val_loss: 0.0294 - val_errors: 0.0037
+Epoch 42/200
+ - 5s - loss: 0.0291 - errors: 0.0036 - val_loss: 0.0293 - val_errors: 0.0036
+Epoch 43/200
+ - 5s - loss: 0.0290 - errors: 0.0036 - val_loss: 0.0292 - val_errors: 0.0036
+Epoch 44/200
+ - 5s - loss: 0.0289 - errors: 0.0035 - val_loss: 0.0291 - val_errors: 0.0035
+Epoch 45/200
+ - 5s - loss: 0.0288 - errors: 0.0035 - val_loss: 0.0290 - val_errors: 0.0035
+Epoch 46/200
+ - 5s - loss: 0.0287 - errors: 0.0034 - val_loss: 0.0289 - val_errors: 0.0034
+Epoch 47/200
+ - 5s - loss: 0.0285 - errors: 0.0033 - val_loss: 0.0288 - val_errors: 0.0034
+Epoch 48/200
+ - 5s - loss: 0.0284 - errors: 0.0033 - val_loss: 0.0286 - val_errors: 0.0033
+Epoch 49/200
+ - 5s - loss: 0.0282 - errors: 0.0033 - val_loss: 0.0285 - val_errors: 0.0033
+Epoch 50/200
+ - 5s - loss: 0.0281 - errors: 0.0032 - val_loss: 0.0284 - val_errors: 0.0033
+
+Epoch 00050: saving model to ./tmp/weights_50-0.03.h5
+Epoch 51/200
+ - 5s - loss: 0.0279 - errors: 0.0031 - val_loss: 0.0282 - val_errors: 0.0032
+Epoch 52/200
+ - 5s - loss: 0.0278 - errors: 0.0031 - val_loss: 0.0280 - val_errors: 0.0031
+Epoch 53/200
+ - 5s - loss: 0.0276 - errors: 0.0031 - val_loss: 0.0279 - val_errors: 0.0031
+Epoch 54/200
+ - 6s - loss: 0.0274 - errors: 0.0030 - val_loss: 0.0277 - val_errors: 0.0030
+Epoch 55/200
+ - 6s - loss: 0.0272 - errors: 0.0030 - val_loss: 0.0276 - val_errors: 0.0030
+Epoch 56/200
+ - 6s - loss: 0.0270 - errors: 0.0029 - val_loss: 0.0274 - val_errors: 0.0030
+Epoch 57/200
+ - 5s - loss: 0.0268 - errors: 0.0029 - val_loss: 0.0271 - val_errors: 0.0029
+Epoch 58/200
+ - 6s - loss: 0.0266 - errors: 0.0028 - val_loss: 0.0269 - val_errors: 0.0028
+Epoch 59/200
+ - 7s - loss: 0.0264 - errors: 0.0027 - val_loss: 0.0267 - val_errors: 0.0027
+Epoch 60/200
+ - 6s - loss: 0.0261 - errors: 0.0027 - val_loss: 0.0264 - val_errors: 0.0026
+
+Epoch 00060: saving model to ./tmp/weights_60-0.03.h5
+Epoch 61/200
+ - 6s - loss: 0.0258 - errors: 0.0026 - val_loss: 0.0261 - val_errors: 0.0025
+Epoch 62/200
+ - 7s - loss: 0.0255 - errors: 0.0025 - val_loss: 0.0259 - val_errors: 0.0025
+Epoch 63/200
+ - 6s - loss: 0.0252 - errors: 0.0024 - val_loss: 0.0256 - val_errors: 0.0024
+Epoch 64/200
+ - 6s - loss: 0.0248 - errors: 0.0023 - val_loss: 0.0252 - val_errors: 0.0023
+Epoch 65/200
+ - 7s - loss: 0.0244 - errors: 0.0023 - val_loss: 0.0248 - val_errors: 0.0022
+Epoch 66/200
+ - 7s - loss: 0.0240 - errors: 0.0021 - val_loss: 0.0243 - val_errors: 0.0021
+Epoch 67/200
+ - 7s - loss: 0.0235 - errors: 0.0020 - val_loss: 0.0238 - val_errors: 0.0020
+Epoch 68/200
+ - 7s - loss: 0.0229 - errors: 0.0019 - val_loss: 0.0232 - val_errors: 0.0019
+Epoch 69/200
+ - 7s - loss: 0.0223 - errors: 0.0018 - val_loss: 0.0226 - val_errors: 0.0018
+Epoch 70/200
+ - 7s - loss: 0.0216 - errors: 0.0017 - val_loss: 0.0218 - val_errors: 0.0016
+
+Epoch 00070: saving model to ./tmp/weights_70-0.02.h5
+Epoch 71/200
+ - 7s - loss: 0.0207 - errors: 0.0015 - val_loss: 0.0210 - val_errors: 0.0015
+Epoch 72/200
+ - 7s - loss: 0.0198 - errors: 0.0014 - val_loss: 0.0201 - val_errors: 0.0013
+Epoch 73/200
+ - 8s - loss: 0.0188 - errors: 0.0012 - val_loss: 0.0190 - val_errors: 0.0011
+Epoch 74/200
+ - 7s - loss: 0.0177 - errors: 0.0011 - val_loss: 0.0180 - val_errors: 9.9889e-04
+Epoch 75/200
+ - 9s - loss: 0.0165 - errors: 9.2190e-04 - val_loss: 0.0168 - val_errors: 8.4111e-04
+Epoch 76/200
+ - 7s - loss: 0.0153 - errors: 7.3762e-04 - val_loss: 0.0156 - val_errors: 7.1889e-04
+Epoch 77/200
+ - 7s - loss: 0.0141 - errors: 5.9762e-04 - val_loss: 0.0145 - val_errors: 5.9000e-04
+Epoch 78/200
+ - 8s - loss: 0.0129 - errors: 4.8667e-04 - val_loss: 0.0133 - val_errors: 4.9556e-04
+Epoch 79/200
+ - 8s - loss: 0.0118 - errors: 3.9524e-04 - val_loss: 0.0123 - val_errors: 4.2667e-04
+Epoch 80/200
+ - 8s - loss: 0.0108 - errors: 3.2524e-04 - val_loss: 0.0113 - val_errors: 3.5889e-04
+
+Epoch 00080: saving model to ./tmp/weights_80-0.01.h5
+Epoch 81/200
+ - 10s - loss: 0.0098 - errors: 2.7238e-04 - val_loss: 0.0104 - val_errors: 2.8556e-04
+Epoch 82/200
+ - 10s - loss: 0.0090 - errors: 2.1238e-04 - val_loss: 0.0097 - val_errors: 2.3889e-04
+Epoch 83/200
+ - 9s - loss: 0.0082 - errors: 1.8476e-04 - val_loss: 0.0088 - val_errors: 2.0222e-04
+Epoch 84/200
+ - 9s - loss: 0.0074 - errors: 1.5905e-04 - val_loss: 0.0080 - val_errors: 1.7333e-04
+Epoch 85/200
+ - 7s - loss: 0.0068 - errors: 1.4762e-04 - val_loss: 0.0073 - val_errors: 1.5111e-04
+Epoch 86/200
+ - 8s - loss: 0.0062 - errors: 1.3286e-04 - val_loss: 0.0067 - val_errors: 1.3333e-04
+Epoch 87/200
+ - 9s - loss: 0.0057 - errors: 1.1476e-04 - val_loss: 0.0063 - val_errors: 1.2000e-04
+Epoch 88/200
+ - 11s - loss: 0.0052 - errors: 9.8571e-05 - val_loss: 0.0057 - val_errors: 1.2111e-04
+Epoch 89/200
+ - 9s - loss: 0.0048 - errors: 8.5714e-05 - val_loss: 0.0051 - val_errors: 1.1000e-04
+Epoch 90/200
+ - 9s - loss: 0.0045 - errors: 8.5714e-05 - val_loss: 0.0048 - val_errors: 1.0556e-04
+
+Epoch 00090: saving model to ./tmp/weights_90-0.00.h5
+Epoch 91/200
+ - 11s - loss: 0.0041 - errors: 7.2381e-05 - val_loss: 0.0045 - val_errors: 9.1111e-05
+Epoch 92/200
+ - 10s - loss: 0.0039 - errors: 7.1905e-05 - val_loss: 0.0043 - val_errors: 8.3333e-05
+Epoch 93/200
+ - 11s - loss: 0.0036 - errors: 5.7143e-05 - val_loss: 0.0039 - val_errors: 7.7778e-05
+Epoch 94/200
+ - 10s - loss: 0.0034 - errors: 5.6190e-05 - val_loss: 0.0037 - val_errors: 7.6667e-05
+Epoch 95/200
+ - 11s - loss: 0.0032 - errors: 4.8571e-05 - val_loss: 0.0034 - val_errors: 6.8889e-05
+Epoch 96/200
+ - 11s - loss: 0.0030 - errors: 4.7143e-05 - val_loss: 0.0033 - val_errors: 6.3333e-05
+Epoch 97/200
+ - 11s - loss: 0.0028 - errors: 4.2381e-05 - val_loss: 0.0032 - val_errors: 5.2222e-05
+Epoch 98/200
+ - 11s - loss: 0.0026 - errors: 3.8095e-05 - val_loss: 0.0029 - val_errors: 4.5556e-05
+Epoch 99/200
+ - 11s - loss: 0.0025 - errors: 3.8571e-05 - val_loss: 0.0027 - val_errors: 4.0000e-05
+Epoch 100/200
+ - 11s - loss: 0.0024 - errors: 3.3333e-05 - val_loss: 0.0026 - val_errors: 3.7778e-05
+
+Epoch 00100: saving model to ./tmp/weights_100-0.00.h5
+Epoch 101/200
+ - 11s - loss: 0.0022 - errors: 2.8571e-05 - val_loss: 0.0024 - val_errors: 3.6667e-05
+Epoch 102/200
+ - 11s - loss: 0.0021 - errors: 2.6190e-05 - val_loss: 0.0023 - val_errors: 3.6667e-05
+Epoch 103/200
+ - 11s - loss: 0.0020 - errors: 2.4286e-05 - val_loss: 0.0023 - val_errors: 3.0000e-05
+Epoch 104/200
+ - 11s - loss: 0.0019 - errors: 2.3333e-05 - val_loss: 0.0021 - val_errors: 2.7778e-05
+Epoch 105/200
+ - 11s - loss: 0.0018 - errors: 1.9048e-05 - val_loss: 0.0021 - val_errors: 2.2222e-05
+Epoch 106/200
+ - 11s - loss: 0.0017 - errors: 1.9524e-05 - val_loss: 0.0020 - val_errors: 2.3333e-05
+Epoch 107/200
+ - 11s - loss: 0.0016 - errors: 1.9048e-05 - val_loss: 0.0018 - val_errors: 2.0000e-05
+Epoch 108/200
+ - 11s - loss: 0.0015 - errors: 1.7619e-05 - val_loss: 0.0016 - val_errors: 2.0000e-05
+Epoch 109/200
+ - 11s - loss: 0.0015 - errors: 1.6667e-05 - val_loss: 0.0017 - val_errors: 1.7778e-05
+Epoch 110/200
+ - 11s - loss: 0.0014 - errors: 1.5238e-05 - val_loss: 0.0016 - val_errors: 1.3333e-05
+
+Epoch 00110: saving model to ./tmp/weights_110-0.00.h5
+Epoch 111/200
+ - 11s - loss: 0.0013 - errors: 1.5238e-05 - val_loss: 0.0016 - val_errors: 1.3333e-05
+Epoch 112/200
+ - 11s - loss: 0.0013 - errors: 1.5238e-05 - val_loss: 0.0014 - val_errors: 1.3333e-05
+Epoch 113/200
+ - 11s - loss: 0.0012 - errors: 1.4762e-05 - val_loss: 0.0013 - val_errors: 1.2222e-05
+Epoch 114/200
+ - 11s - loss: 0.0012 - errors: 1.1429e-05 - val_loss: 0.0013 - val_errors: 1.2222e-05
+Epoch 115/200
+ - 11s - loss: 0.0011 - errors: 1.1429e-05 - val_loss: 0.0013 - val_errors: 1.6667e-05
+Epoch 116/200
+ - 11s - loss: 0.0011 - errors: 9.0476e-06 - val_loss: 0.0013 - val_errors: 1.2222e-05
+Epoch 117/200
+ - 11s - loss: 0.0010 - errors: 7.6190e-06 - val_loss: 0.0011 - val_errors: 1.1111e-05
+Epoch 118/200
+ - 11s - loss: 0.0010 - errors: 7.1429e-06 - val_loss: 0.0012 - val_errors: 1.4444e-05
+Epoch 119/200
+ - 11s - loss: 9.6831e-04 - errors: 1.0000e-05 - val_loss: 0.0010 - val_errors: 1.1111e-05
+Epoch 120/200
+ - 11s - loss: 9.3835e-04 - errors: 6.6667e-06 - val_loss: 0.0010 - val_errors: 1.4444e-05
+
+Epoch 00120: saving model to ./tmp/weights_120-0.00.h5
+Epoch 121/200
+ - 11s - loss: 9.0488e-04 - errors: 7.1429e-06 - val_loss: 0.0010 - val_errors: 1.4444e-05
+Epoch 122/200
+ - 11s - loss: 8.8709e-04 - errors: 6.6667e-06 - val_loss: 9.7896e-04 - val_errors: 1.4444e-05
+Epoch 123/200
+ - 11s - loss: 8.5987e-04 - errors: 6.1905e-06 - val_loss: 9.3243e-04 - val_errors: 1.4444e-05
+Epoch 124/200
+ - 11s - loss: 8.1956e-04 - errors: 5.2381e-06 - val_loss: 9.1106e-04 - val_errors: 1.3333e-05
+Epoch 125/200
+ - 11s - loss: 8.0447e-04 - errors: 3.3333e-06 - val_loss: 8.8523e-04 - val_errors: 1.2222e-05
+Epoch 126/200
+ - 11s - loss: 7.7046e-04 - errors: 4.7619e-06 - val_loss: 8.7598e-04 - val_errors: 1.5556e-05
+Epoch 127/200
+ - 11s - loss: 7.4482e-04 - errors: 2.8571e-06 - val_loss: 7.8287e-04 - val_errors: 1.1111e-05
+Epoch 128/200
+ - 11s - loss: 7.4937e-04 - errors: 4.2857e-06 - val_loss: 8.6661e-04 - val_errors: 1.4444e-05
+Epoch 129/200
+ - 11s - loss: 7.2416e-04 - errors: 4.2857e-06 - val_loss: 8.4953e-04 - val_errors: 1.1111e-05
+Epoch 130/200
+ - 11s - loss: 7.2387e-04 - errors: 1.4286e-06 - val_loss: 7.9557e-04 - val_errors: 1.3333e-05
+
+Epoch 00130: saving model to ./tmp/weights_130-0.00.h5
+Epoch 131/200
+ - 19s - loss: 6.7874e-04 - errors: 2.8571e-06 - val_loss: 7.5415e-04 - val_errors: 1.1111e-05
+Epoch 132/200
+ - 16s - loss: 6.6759e-04 - errors: 2.3810e-06 - val_loss: 8.4210e-04 - val_errors: 1.1111e-05
+Epoch 133/200
+ - 12s - loss: 6.6076e-04 - errors: 1.9048e-06 - val_loss: 7.2504e-04 - val_errors: 1.1111e-05
+Epoch 134/200
+ - 11s - loss: 6.4227e-04 - errors: 2.8571e-06 - val_loss: 6.9833e-04 - val_errors: 1.0000e-05
+Epoch 135/200
+ - 11s - loss: 6.4233e-04 - errors: 2.8571e-06 - val_loss: 6.4618e-04 - val_errors: 1.0000e-05
+Epoch 136/200
+ - 11s - loss: 6.4101e-04 - errors: 2.8571e-06 - val_loss: 6.4612e-04 - val_errors: 1.0000e-05
+Epoch 137/200
+ - 16s - loss: 6.0828e-04 - errors: 1.9048e-06 - val_loss: 6.6300e-04 - val_errors: 1.1111e-05
+Epoch 138/200
+ - 17s - loss: 6.0567e-04 - errors: 1.4286e-06 - val_loss: 7.2934e-04 - val_errors: 1.1111e-05
+Epoch 139/200
+ - 13s - loss: 5.7466e-04 - errors: 2.8571e-06 - val_loss: 6.7947e-04 - val_errors: 1.1111e-05
+Epoch 140/200
+ - 11s - loss: 5.8374e-04 - errors: 1.4286e-06 - val_loss: 6.4020e-04 - val_errors: 1.0000e-05
+
+Epoch 00140: saving model to ./tmp/weights_140-0.00.h5
+Epoch 141/200
+ - 17s - loss: 5.6326e-04 - errors: 1.4286e-06 - val_loss: 6.0837e-04 - val_errors: 1.0000e-05
+Epoch 142/200
+ - 12s - loss: 5.6404e-04 - errors: 0.0000e+00 - val_loss: 5.9126e-04 - val_errors: 1.0000e-05
+Epoch 143/200
+ - 11s - loss: 5.4490e-04 - errors: 0.0000e+00 - val_loss: 6.3086e-04 - val_errors: 1.1111e-05
+Epoch 144/200
+ - 11s - loss: 5.3430e-04 - errors: 1.4286e-06 - val_loss: 5.8540e-04 - val_errors: 1.0000e-05
+Epoch 145/200
+ - 11s - loss: 5.3370e-04 - errors: 0.0000e+00 - val_loss: 6.1189e-04 - val_errors: 1.1111e-05
+Epoch 146/200
+ - 19s - loss: 5.1561e-04 - errors: 0.0000e+00 - val_loss: 6.0268e-04 - val_errors: 1.1111e-05
+Epoch 147/200
+ - 18s - loss: 5.2115e-04 - errors: 0.0000e+00 - val_loss: 5.5574e-04 - val_errors: 1.0000e-05
+Epoch 148/200
+ - 15s - loss: 5.1051e-04 - errors: 0.0000e+00 - val_loss: 5.3664e-04 - val_errors: 7.7778e-06
+Epoch 149/200
+ - 11s - loss: 4.9690e-04 - errors: 0.0000e+00 - val_loss: 5.7731e-04 - val_errors: 1.0000e-05
+Epoch 150/200
+ - 11s - loss: 4.8728e-04 - errors: 0.0000e+00 - val_loss: 6.0763e-04 - val_errors: 1.0000e-05
+
+Epoch 00150: saving model to ./tmp/weights_150-0.00.h5
+Epoch 151/200
+ - 19s - loss: 4.9444e-04 - errors: 0.0000e+00 - val_loss: 5.3796e-04 - val_errors: 6.6667e-06
+Epoch 152/200
+ - 13s - loss: 4.8376e-04 - errors: 0.0000e+00 - val_loss: 5.2025e-04 - val_errors: 7.7778e-06
+Epoch 153/200
+ - 11s - loss: 4.6713e-04 - errors: 0.0000e+00 - val_loss: 5.0775e-04 - val_errors: 1.1111e-05
+Epoch 154/200
+ - 11s - loss: 4.6046e-04 - errors: 0.0000e+00 - val_loss: 5.1592e-04 - val_errors: 7.7778e-06
+Epoch 155/200
+ - 12s - loss: 4.7361e-04 - errors: 0.0000e+00 - val_loss: 5.8276e-04 - val_errors: 7.7778e-06
+Epoch 156/200
+ - 19s - loss: 4.5431e-04 - errors: 0.0000e+00 - val_loss: 4.3605e-04 - val_errors: 7.7778e-06
+Epoch 157/200
+ - 19s - loss: 4.3666e-04 - errors: 0.0000e+00 - val_loss: 4.8907e-04 - val_errors: 7.7778e-06
+Epoch 158/200
+ - 15s - loss: 4.4559e-04 - errors: 0.0000e+00 - val_loss: 5.4523e-04 - val_errors: 7.7778e-06
+Epoch 159/200
+ - 13s - loss: 4.3362e-04 - errors: 0.0000e+00 - val_loss: 4.6439e-04 - val_errors: 7.7778e-06
+Epoch 160/200
+ - 11s - loss: 4.0794e-04 - errors: 0.0000e+00 - val_loss: 4.4676e-04 - val_errors: 7.7778e-06
+
+Epoch 00160: saving model to ./tmp/weights_160-0.00.h5
+Epoch 161/200
+ - 19s - loss: 4.2831e-04 - errors: 0.0000e+00 - val_loss: 5.5169e-04 - val_errors: 7.7778e-06
+Epoch 162/200
+ - 18s - loss: 4.4534e-04 - errors: 0.0000e+00 - val_loss: 4.9182e-04 - val_errors: 7.7778e-06
+Epoch 163/200
+ - 18s - loss: 4.0147e-04 - errors: 0.0000e+00 - val_loss: 4.7778e-04 - val_errors: 7.7778e-06
+Epoch 164/200
+ - 17s - loss: 4.2323e-04 - errors: 0.0000e+00 - val_loss: 4.4896e-04 - val_errors: 8.8889e-06
+Epoch 165/200
+ - 17s - loss: 4.0692e-04 - errors: 0.0000e+00 - val_loss: 4.3819e-04 - val_errors: 8.8889e-06
+Epoch 166/200
+ - 16s - loss: 4.1089e-04 - errors: 0.0000e+00 - val_loss: 4.7736e-04 - val_errors: 8.8889e-06
+Epoch 167/200
+ - 16s - loss: 3.8494e-04 - errors: 0.0000e+00 - val_loss: 4.0771e-04 - val_errors: 8.8889e-06
+Epoch 168/200
+ - 11s - loss: 3.7871e-04 - errors: 0.0000e+00 - val_loss: 4.2059e-04 - val_errors: 8.8889e-06
+Epoch 169/200
+ - 11s - loss: 3.8200e-04 - errors: 0.0000e+00 - val_loss: 4.1129e-04 - val_errors: 7.7778e-06
+Epoch 170/200
+ - 13s - loss: 3.7383e-04 - errors: 0.0000e+00 - val_loss: 3.8793e-04 - val_errors: 8.8889e-06
+
+Epoch 00170: saving model to ./tmp/weights_170-0.00.h5
+Epoch 171/200
+ - 19s - loss: 3.7359e-04 - errors: 0.0000e+00 - val_loss: 4.6187e-04 - val_errors: 7.7778e-06
+Epoch 172/200
+ - 19s - loss: 3.8132e-04 - errors: 0.0000e+00 - val_loss: 4.5308e-04 - val_errors: 7.7778e-06
+Epoch 173/200
+ - 17s - loss: 3.6749e-04 - errors: 0.0000e+00 - val_loss: 4.3487e-04 - val_errors: 8.8889e-06
+Epoch 174/200
+ - 11s - loss: 3.7302e-04 - errors: 0.0000e+00 - val_loss: 4.4075e-04 - val_errors: 7.7778e-06
+Epoch 175/200
+ - 11s - loss: 3.6213e-04 - errors: 0.0000e+00 - val_loss: 4.0860e-04 - val_errors: 8.8889e-06
+Epoch 176/200
+ - 19s - loss: 3.6500e-04 - errors: 0.0000e+00 - val_loss: 4.0950e-04 - val_errors: 8.8889e-06
+Epoch 177/200
+ - 19s - loss: 3.5973e-04 - errors: 0.0000e+00 - val_loss: 4.2134e-04 - val_errors: 8.8889e-06
+Epoch 178/200
+ - 19s - loss: 3.3921e-04 - errors: 0.0000e+00 - val_loss: 3.9041e-04 - val_errors: 8.8889e-06
+Epoch 179/200
+ - 12s - loss: 3.6306e-04 - errors: 0.0000e+00 - val_loss: 5.0037e-04 - val_errors: 8.8889e-06
+Epoch 180/200
+ - 12s - loss: 3.6547e-04 - errors: 0.0000e+00 - val_loss: 4.3439e-04 - val_errors: 8.8889e-06
+
+Epoch 00180: saving model to ./tmp/weights_180-0.00.h5
+Epoch 181/200
+ - 12s - loss: 3.3573e-04 - errors: 0.0000e+00 - val_loss: 4.1791e-04 - val_errors: 8.8889e-06
+Epoch 182/200
+ - 19s - loss: 3.3510e-04 - errors: 0.0000e+00 - val_loss: 3.9762e-04 - val_errors: 8.8889e-06
+Epoch 183/200
+ - 19s - loss: 3.3335e-04 - errors: 0.0000e+00 - val_loss: 3.7418e-04 - val_errors: 7.7778e-06
+Epoch 184/200
+ - 19s - loss: 3.3248e-04 - errors: 0.0000e+00 - val_loss: 4.6858e-04 - val_errors: 8.8889e-06
+Epoch 185/200
+ - 19s - loss: 3.4550e-04 - errors: 0.0000e+00 - val_loss: 3.5794e-04 - val_errors: 8.8889e-06
+Epoch 186/200
+ - 18s - loss: 3.2584e-04 - errors: 0.0000e+00 - val_loss: 3.2142e-04 - val_errors: 8.8889e-06
+Epoch 187/200
+ - 18s - loss: 3.3234e-04 - errors: 0.0000e+00 - val_loss: 3.5515e-04 - val_errors: 8.8889e-06
+Epoch 188/200
+ - 13s - loss: 3.3174e-04 - errors: 9.5238e-07 - val_loss: 3.9474e-04 - val_errors: 7.7778e-06
+Epoch 189/200
+ - 11s - loss: 3.2122e-04 - errors: 0.0000e+00 - val_loss: 3.1065e-04 - val_errors: 8.8889e-06
+Epoch 190/200
+ - 14s - loss: 3.1847e-04 - errors: 0.0000e+00 - val_loss: 3.4773e-04 - val_errors: 8.8889e-06
+
+Epoch 00190: saving model to ./tmp/weights_190-0.00.h5
+Epoch 191/200
+ - 19s - loss: 3.0879e-04 - errors: 0.0000e+00 - val_loss: 3.2230e-04 - val_errors: 8.8889e-06
+Epoch 192/200
+ - 19s - loss: 3.1726e-04 - errors: 0.0000e+00 - val_loss: 3.3091e-04 - val_errors: 8.8889e-06
+Epoch 193/200
+ - 19s - loss: 3.1348e-04 - errors: 0.0000e+00 - val_loss: 3.1042e-04 - val_errors: 8.8889e-06
+Epoch 194/200
+ - 18s - loss: 3.0419e-04 - errors: 0.0000e+00 - val_loss: 3.5532e-04 - val_errors: 8.8889e-06
+Epoch 195/200
+ - 16s - loss: 3.1994e-04 - errors: 0.0000e+00 - val_loss: 3.5971e-04 - val_errors: 8.8889e-06
+Epoch 196/200
+ - 18s - loss: 3.1147e-04 - errors: 0.0000e+00 - val_loss: 3.0036e-04 - val_errors: 8.8889e-06
+Epoch 197/200
+ - 16s - loss: 3.0154e-04 - errors: 0.0000e+00 - val_loss: 3.7879e-04 - val_errors: 1.0000e-05
+Epoch 198/200
+ - 11s - loss: 2.9711e-04 - errors: 0.0000e+00 - val_loss: 3.5516e-04 - val_errors: 8.8889e-06
+Epoch 199/200
+ - 14s - loss: 2.9255e-04 - errors: 0.0000e+00 - val_loss: 3.3128e-04 - val_errors: 8.8889e-06
+Epoch 200/200
+ - 19s - loss: 2.8725e-04 - errors: 0.0000e+00 - val_loss: 3.0795e-04 - val_errors: 1.0000e-05
+
+Epoch 00200: saving model to ./tmp/weights_200-0.00.h5
+===>Test set BER  3.3333333333333333e-06

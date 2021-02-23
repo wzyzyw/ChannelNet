@@ -49,10 +49,10 @@ def errors(y_true, y_pred):
     myOtherTensor = K.not_equal(y_true, K.round(y_pred))
     return K.mean(tf.cast(myOtherTensor, tf.float32))
 def DNCNN_model (args):
-    input_shape = (args.block_len, args.code_rate_k)
+    input_shape = (args.block_len, args.code_rate_n)
     inpt = Input(shape=input_shape)
     # 1st layer, Conv+relu
-    x = Conv1D(filters=1, kernel_size=args.kernel_size, strides=1,padding='same')(inpt)
+    x = Conv1D(filters=64, kernel_size=args.kernel_size, strides=1,padding='same')(inpt)
     x = Activation('relu')(x)
     # 18 layers, Conv+BN+relu
     for i in range(args.num_layer):
@@ -60,7 +60,7 @@ def DNCNN_model (args):
         x = BatchNormalization(axis=-1, epsilon=1e-3)(x)
         x = Activation('relu')(x)   
     # last layer, Conv
-    x = Conv1D(filters=1, kernel_size=args.kernel_size, strides=1, padding='same')(x)
+    x = Conv1D(filters=args.code_rate_n, kernel_size=args.kernel_size, strides=1, padding='same')(x)
     x = Subtract()([inpt, x])   # input - noise
     model = Model(inputs=inpt, outputs=x)
     adam = Adam(lr=args.lr, beta_1=0.9, beta_2=0.999, epsilon=1e-8) 

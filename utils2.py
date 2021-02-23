@@ -55,6 +55,30 @@ def generateData(args,mode):
 	received_codes=codes + fwd_noise
 	inputdata=received_codes
 	return (inputdata,fwd_noise)
+def generateEncodeData(args,mode,turbo):
+	if mode=="train":
+		batchnum=args.num_block
+	elif mode=="test":
+		batchnum=args.num_test_block
+	X=np.zeros((batchnum,args.block_len,args.code_rate_k))
+	X_train=np.zeros((batchnum,args.block_len,args.code_rate_n))
+	for idx_batch in range(batchnum):
+		tmp=np.random.randint(0,2,(args.block_len,args.code_rate_k))
+		X[idx_batch,:,:]=tmp
+		tmp=np.array(tmp,dtype="float64")
+		sys,par1,par2=turbo.encoder(tmp)
+		X_train[idx_batch,:,0]=sys
+		X_train[idx_batch,:,1]=par1
+		X_train[idx_batch,:,2]=par2
+	noise_shape = (batchnum,args.block_len, args.code_rate_n)
+	this_sigma,this_snr=getnoisesigma(args.train_channel_low,args.train_channel_high)
+	fwd_noise  = generate_noise(noise_shape, args, this_sigma)
+	codes=X_train
+	# BPSK
+	codes=codes*2-1
+	received_codes=codes + fwd_noise
+	inputdata=received_codes
+	return (X,inputdata,fwd_noise)
 def trainer(args,model,epoch,optimizer,criterion,turbo,use_cuda=False,verbose=True):
 	device = torch.device("cuda" if use_cuda else "cpu")
 	model.train()

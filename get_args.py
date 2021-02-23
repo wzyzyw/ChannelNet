@@ -51,7 +51,7 @@ def get_args():
     parser.add_argument('-snr_points', type=int, default=9)
 
     parser.add_argument('-batch_size', type=int, default=100  )
-    parser.add_argument('-num_epoch', type=int, default=200)
+    parser.add_argument('-num_epoch', type=int, default=500)
     parser.add_argument('-test_ratio', type=int, default=1,help = 'only for high SNR testing')
     # block length related
     parser.add_argument('-block_len', type=int, default=100)
