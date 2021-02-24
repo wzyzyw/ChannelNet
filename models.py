@@ -16,8 +16,15 @@ from scipy import interpolate
 import keras
 import matplotlib.pyplot as plt
 import tensorflow as tf
+from keras import backend as K
 #from scipy.misc import imresize
-
+def enhancedloss(y_true,y_pred):
+    lamb=0.0
+    ave_err=K.mean(y_pred-y_true)
+    S=K.mean(ave_err**3)/(K.mean(ave_err**2)**(3/2))
+    C=K.mean(ave_err**4)/(K.mean(ave_err**2)**2)
+    normal_test=S**2+1/4*(C-3)**2
+    return K.mean((y_pred-y_true)**2)+lamb*normal_test
 class LossHistory(keras.callbacks.Callback):
     def on_train_begin(self, logs={}):
         self.train_loss = {'batch':[], 'epoch':[]}
@@ -65,7 +72,7 @@ def DNCNN_model (args):
     model = Model(inputs=inpt, outputs=x)
     adam = Adam(lr=args.lr, beta_1=0.9, beta_2=0.999, epsilon=1e-8) 
     model.compile(optimizer=adam, loss='mean_squared_error', metrics=['mean_squared_error'])  
-    # model.compile(optimizer=adam, loss='binary_crossentropy', metrics=['binary_crossentropy'])     
+    # model.compile(optimizer=adam, loss='binary_crossentropy', metrics=['binary_crossentropy'])  'mean_squared_error'   
     
     return model
 
@@ -86,7 +93,7 @@ def DNCNN_train(args,train_data ,train_label, val_data , val_label,channel_model
   
 def DNCNN_predict(args,input_data, channel_model ,identity ):
   dncnn_model = DNCNN_model(args)
-  dncnn_model.load_weights("./tmp/DNCNN_" + channel_model +"_"+ str(identity)  + ".h5")
+  dncnn_model.load_weights("./model/DNCNN_" + channel_model +"_"+ str(identity)  + ".h5")
   predicted  = dncnn_model.predict(input_data)
   return predicted
   

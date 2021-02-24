@@ -19,8 +19,7 @@ def get_args():
                         default = 'awgn')
 
     # continuous channels training algorithms
-    parser.add_argument('-train_channel_low', type=float, default  = -5.0)
-    parser.add_argument('-train_channel_high', type=float, default =15.0)
+    
     parser.add_argument('-init_nw_weight', type=str, default='./models/torch_model_decoder_036718.pt')
 
     # code rate is k/n, so that enable multiple code rates. This has to match the encoder/decoder nw structure.
@@ -45,14 +44,17 @@ def get_args():
     ################################################################
 
     parser.add_argument('-dropout',type=float, default=0.5)
-
-    parser.add_argument('-snr_test_start', type=float, default=15.0)
-    parser.add_argument('-snr_test_end', type=float, default=15.0)
+    parser.add_argument('-train_channel_low', type=float, default  = 15.0)
+    parser.add_argument('-train_channel_high', type=float, default =15.0)
+    parser.add_argument('-snr_test_start', type=float, default=-5.0)
+    parser.add_argument('-snr_test_end', type=float, default=16.0)
     parser.add_argument('-snr_points', type=int, default=9)
 
     parser.add_argument('-batch_size', type=int, default=100  )
     parser.add_argument('-num_epoch', type=int, default=200)
     parser.add_argument('-test_ratio', type=int, default=1,help = 'only for high SNR testing')
+    parser.add_argument('-add_mode',type=str,default='sequence',help='generate random snr or sequence noise')
+    parser.add_argument('-snr_interval',type=int,default=5,help='sequence noise snr interval')
     # block length related
     parser.add_argument('-block_len', type=int, default=100)
 
