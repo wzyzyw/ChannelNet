@@ -1,0 +1,546 @@
+注：
+固定15db，loss加入正态检验，lambda=10.0,bikappa噪声
+Namespace(M=2, add_mode='random', batch_size=100, block_len=100, channel='bikappa', code_rate_k=1, code_rate_n=3, dropout=0.5, enc1=7, enc2=5, enc_clipping='both', enc_grad_limit=0.01, enc_quantize_level=2, enc_value_limit=1.0, feedback=7, init_nw_weight='./models/torch_model_decoder_036718.pt', is_parallel=0, is_train=True, kernel_size=3, lr=0.001, momentum=0.9, no_cuda=False, num_block=14000, num_epoch=200, num_iteration=6, num_layer=14, num_test_block=6000, optimizer='adam', precompute_norm_stats=False, print_pos_ber=False, print_pos_power=False, print_test_traj=False, rec_quantize=False, rec_quantize_level=2, rec_quantize_limit=1.0, snr_interval=5, snr_points=9, snr_test_end=16.0, snr_test_start=-5.0, test_channel_mode='block_norm', test_ratio=1, train_channel_high=15.0, train_channel_low=15.0, train_channel_mode='block_norm')
+[Convolutional Code Codec] Encoder M  [2]  Generator Matrix  [[7 5]]  Feedback  7
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+input_1 (InputLayer)         (None, 100, 3)            0         
+_________________________________________________________________
+conv1d_1 (Conv1D)            (None, 100, 64)           640       
+_________________________________________________________________
+activation_1 (Activation)    (None, 100, 64)           0         
+_________________________________________________________________
+conv1d_2 (Conv1D)            (None, 100, 64)           12352     
+_________________________________________________________________
+batch_normalization_1 (Batch (None, 100, 64)           256       
+_________________________________________________________________
+activation_2 (Activation)    (None, 100, 64)           0         
+_________________________________________________________________
+conv1d_3 (Conv1D)            (None, 100, 64)           12352     
+_________________________________________________________________
+batch_normalization_2 (Batch (None, 100, 64)           256       
+_________________________________________________________________
+activation_3 (Activation)    (None, 100, 64)           0         
+_________________________________________________________________
+conv1d_4 (Conv1D)            (None, 100, 64)           12352     
+_________________________________________________________________
+batch_normalization_3 (Batch (None, 100, 64)           256       
+_________________________________________________________________
+activation_4 (Activation)    (None, 100, 64)           0         
+_________________________________________________________________
+conv1d_5 (Conv1D)            (None, 100, 64)           12352     
+_________________________________________________________________
+batch_normalization_4 (Batch (None, 100, 64)           256       
+_________________________________________________________________
+activation_5 (Activation)    (None, 100, 64)           0         
+_________________________________________________________________
+conv1d_6 (Conv1D)            (None, 100, 64)           12352     
+_________________________________________________________________
+batch_normalization_5 (Batch (None, 100, 64)           256       
+_________________________________________________________________
+activation_6 (Activation)    (None, 100, 64)           0         
+_________________________________________________________________
+conv1d_7 (Conv1D)            (None, 100, 64)           12352     
+_________________________________________________________________
+batch_normalization_6 (Batch (None, 100, 64)           256       
+_________________________________________________________________
+activation_7 (Activation)    (None, 100, 64)           0         
+_________________________________________________________________
+conv1d_8 (Conv1D)            (None, 100, 64)           12352     
+_________________________________________________________________
+batch_normalization_7 (Batch (None, 100, 64)           256       
+_________________________________________________________________
+activation_8 (Activation)    (None, 100, 64)           0         
+_________________________________________________________________
+conv1d_9 (Conv1D)            (None, 100, 64)           12352     
+_________________________________________________________________
+batch_normalization_8 (Batch (None, 100, 64)           256       
+_________________________________________________________________
+activation_9 (Activation)    (None, 100, 64)           0         
+_________________________________________________________________
+conv1d_10 (Conv1D)           (None, 100, 64)           12352     
+_________________________________________________________________
+batch_normalization_9 (Batch (None, 100, 64)           256       
+_________________________________________________________________
+activation_10 (Activation)   (None, 100, 64)           0         
+_________________________________________________________________
+conv1d_11 (Conv1D)           (None, 100, 64)           12352     
+_________________________________________________________________
+batch_normalization_10 (Batc (None, 100, 64)           256       
+_________________________________________________________________
+activation_11 (Activation)   (None, 100, 64)           0         
+_________________________________________________________________
+conv1d_12 (Conv1D)           (None, 100, 64)           12352     
+_________________________________________________________________
+batch_normalization_11 (Batc (None, 100, 64)           256       
+_________________________________________________________________
+activation_12 (Activation)   (None, 100, 64)           0         
+_________________________________________________________________
+conv1d_13 (Conv1D)           (None, 100, 64)           12352     
+_________________________________________________________________
+batch_normalization_12 (Batc (None, 100, 64)           256       
+_________________________________________________________________
+activation_13 (Activation)   (None, 100, 64)           0         
+_________________________________________________________________
+conv1d_14 (Conv1D)           (None, 100, 64)           12352     
+_________________________________________________________________
+batch_normalization_13 (Batc (None, 100, 64)           256       
+_________________________________________________________________
+activation_14 (Activation)   (None, 100, 64)           0         
+_________________________________________________________________
+conv1d_15 (Conv1D)           (None, 100, 64)           12352     
+_________________________________________________________________
+batch_normalization_14 (Batc (None, 100, 64)           256       
+_________________________________________________________________
+activation_15 (Activation)   (None, 100, 64)           0         
+_________________________________________________________________
+conv1d_16 (Conv1D)           (None, 100, 3)            579       
+=================================================================
+Total params: 177,731
+Trainable params: 175,939
+Non-trainable params: 1,792
+_________________________________________________________________
+None
+Train on 14000 samples, validate on 6000 samples
+Epoch 1/200
+ - 23s - loss: 199.9525 - enhancedloss: 199.9525 - val_loss: 278.1328 - val_enhancedloss: 278.1328
+Epoch 2/200
+ - 9s - loss: 63.0879 - enhancedloss: 63.0879 - val_loss: 362.8183 - val_enhancedloss: 362.8183
+Epoch 3/200
+ - 9s - loss: 56.4834 - enhancedloss: 56.4834 - val_loss: 96.7862 - val_enhancedloss: 96.7862
+Epoch 4/200
+ - 9s - loss: 57.9511 - enhancedloss: 57.9511 - val_loss: 67.8152 - val_enhancedloss: 67.8152
+Epoch 5/200
+ - 9s - loss: 51.2375 - enhancedloss: 51.2375 - val_loss: 35.1394 - val_enhancedloss: 35.1394
+Epoch 6/200
+ - 10s - loss: 39.7747 - enhancedloss: 39.7747 - val_loss: 29.1200 - val_enhancedloss: 29.1200
+Epoch 7/200
+ - 10s - loss: 36.6861 - enhancedloss: 36.6861 - val_loss: 31.2369 - val_enhancedloss: 31.2369
+Epoch 8/200
+ - 10s - loss: 37.9092 - enhancedloss: 37.9092 - val_loss: 62.1793 - val_enhancedloss: 62.1793
+Epoch 9/200
+ - 10s - loss: 29.2690 - enhancedloss: 29.2690 - val_loss: 170.9206 - val_enhancedloss: 170.9206
+Epoch 10/200
+ - 11s - loss: 38.6578 - enhancedloss: 38.6578 - val_loss: 37.0091 - val_enhancedloss: 37.0091
+
+Epoch 00010: saving model to ./tmp/weights_10-37.01.h5
+Epoch 11/200
+ - 11s - loss: 37.1643 - enhancedloss: 37.1643 - val_loss: 60.3015 - val_enhancedloss: 60.3015
+Epoch 12/200
+ - 12s - loss: 37.4334 - enhancedloss: 37.4334 - val_loss: 70.6036 - val_enhancedloss: 70.6036
+Epoch 13/200
+ - 12s - loss: 32.5744 - enhancedloss: 32.5744 - val_loss: 50.5824 - val_enhancedloss: 50.5824
+Epoch 14/200
+ - 13s - loss: 29.3170 - enhancedloss: 29.3170 - val_loss: 46.1587 - val_enhancedloss: 46.1587
+Epoch 15/200
+ - 12s - loss: 35.4633 - enhancedloss: 35.4633 - val_loss: 65.9108 - val_enhancedloss: 65.9108
+Epoch 16/200
+ - 13s - loss: 31.7777 - enhancedloss: 31.7777 - val_loss: 16.7171 - val_enhancedloss: 16.7171
+Epoch 17/200
+ - 14s - loss: 25.2081 - enhancedloss: 25.2081 - val_loss: 25.5396 - val_enhancedloss: 25.5396
+Epoch 18/200
+ - 14s - loss: 28.2103 - enhancedloss: 28.2103 - val_loss: 44.7558 - val_enhancedloss: 44.7558
+Epoch 19/200
+ - 15s - loss: 29.5971 - enhancedloss: 29.5971 - val_loss: 25.0657 - val_enhancedloss: 25.0657
+Epoch 20/200
+ - 16s - loss: 20.1648 - enhancedloss: 20.1648 - val_loss: 25.6814 - val_enhancedloss: 25.6814
+
+Epoch 00020: saving model to ./tmp/weights_20-25.68.h5
+Epoch 21/200
+ - 17s - loss: 26.0331 - enhancedloss: 26.0331 - val_loss: 17.1591 - val_enhancedloss: 17.1591
+Epoch 22/200
+ - 15s - loss: 25.2905 - enhancedloss: 25.2905 - val_loss: 40.5907 - val_enhancedloss: 40.5907
+Epoch 23/200
+ - 15s - loss: 26.0860 - enhancedloss: 26.0860 - val_loss: 26.9148 - val_enhancedloss: 26.9148
+Epoch 24/200
+ - 17s - loss: 22.9660 - enhancedloss: 22.9660 - val_loss: 20.9310 - val_enhancedloss: 20.9310
+Epoch 25/200
+ - 17s - loss: 22.7787 - enhancedloss: 22.7787 - val_loss: 18.7022 - val_enhancedloss: 18.7022
+Epoch 26/200
+ - 20s - loss: 21.8353 - enhancedloss: 21.8353 - val_loss: 21.3256 - val_enhancedloss: 21.3256
+Epoch 27/200
+ - 19s - loss: 26.4389 - enhancedloss: 26.4389 - val_loss: 16.4580 - val_enhancedloss: 16.4580
+Epoch 28/200
+ - 20s - loss: 25.3038 - enhancedloss: 25.3038 - val_loss: 15.6314 - val_enhancedloss: 15.6314
+Epoch 29/200
+ - 21s - loss: 21.6100 - enhancedloss: 21.6100 - val_loss: 16.6756 - val_enhancedloss: 16.6756
+Epoch 30/200
+ - 21s - loss: 19.2024 - enhancedloss: 19.2024 - val_loss: 17.6639 - val_enhancedloss: 17.6639
+
+Epoch 00030: saving model to ./tmp/weights_30-17.66.h5
+Epoch 31/200
+ - 20s - loss: 22.3732 - enhancedloss: 22.3732 - val_loss: 20.9879 - val_enhancedloss: 20.9879
+Epoch 32/200
+ - 21s - loss: 17.7636 - enhancedloss: 17.7636 - val_loss: 15.4630 - val_enhancedloss: 15.4630
+Epoch 33/200
+ - 23s - loss: 17.7141 - enhancedloss: 17.7141 - val_loss: 16.9431 - val_enhancedloss: 16.9431
+Epoch 34/200
+ - 23s - loss: 18.6655 - enhancedloss: 18.6655 - val_loss: 16.4213 - val_enhancedloss: 16.4213
+Epoch 35/200
+ - 21s - loss: 23.1231 - enhancedloss: 23.1231 - val_loss: 13.7931 - val_enhancedloss: 13.7931
+Epoch 36/200
+ - 23s - loss: 16.2139 - enhancedloss: 16.2139 - val_loss: 12.8652 - val_enhancedloss: 12.8652
+Epoch 37/200
+ - 23s - loss: 19.6236 - enhancedloss: 19.6236 - val_loss: 26.0607 - val_enhancedloss: 26.0607
+Epoch 38/200
+ - 23s - loss: 18.4839 - enhancedloss: 18.4839 - val_loss: 16.9169 - val_enhancedloss: 16.9169
+Epoch 39/200
+ - 23s - loss: 17.7269 - enhancedloss: 17.7269 - val_loss: 24.9008 - val_enhancedloss: 24.9008
+Epoch 40/200
+ - 23s - loss: 17.6020 - enhancedloss: 17.6020 - val_loss: 38.9673 - val_enhancedloss: 38.9673
+
+Epoch 00040: saving model to ./tmp/weights_40-38.97.h5
+Epoch 41/200
+ - 23s - loss: 19.6236 - enhancedloss: 19.6236 - val_loss: 17.1663 - val_enhancedloss: 17.1663
+Epoch 42/200
+ - 23s - loss: 19.8553 - enhancedloss: 19.8553 - val_loss: 17.4092 - val_enhancedloss: 17.4092
+Epoch 43/200
+ - 23s - loss: 18.1406 - enhancedloss: 18.1406 - val_loss: 20.5673 - val_enhancedloss: 20.5673
+Epoch 44/200
+ - 23s - loss: 18.9936 - enhancedloss: 18.9936 - val_loss: 20.5127 - val_enhancedloss: 20.5127
+Epoch 45/200
+ - 27s - loss: 19.0847 - enhancedloss: 19.0847 - val_loss: 14.5676 - val_enhancedloss: 14.5676
+Epoch 46/200
+ - 29s - loss: 16.1386 - enhancedloss: 16.1386 - val_loss: 15.8690 - val_enhancedloss: 15.8690
+Epoch 47/200
+ - 22s - loss: 18.5726 - enhancedloss: 18.5726 - val_loss: 18.4972 - val_enhancedloss: 18.4972
+Epoch 48/200
+ - 29s - loss: 17.3830 - enhancedloss: 17.3830 - val_loss: 16.0435 - val_enhancedloss: 16.0435
+Epoch 49/200
+ - 24s - loss: 18.9644 - enhancedloss: 18.9644 - val_loss: 15.8670 - val_enhancedloss: 15.8670
+Epoch 50/200
+ - 23s - loss: 15.4730 - enhancedloss: 15.4730 - val_loss: 15.6672 - val_enhancedloss: 15.6672
+
+Epoch 00050: saving model to ./tmp/weights_50-15.67.h5
+Epoch 51/200
+ - 27s - loss: 19.6966 - enhancedloss: 19.6966 - val_loss: 16.5181 - val_enhancedloss: 16.5181
+Epoch 52/200
+ - 27s - loss: 17.2061 - enhancedloss: 17.2061 - val_loss: 16.2783 - val_enhancedloss: 16.2783
+Epoch 53/200
+ - 23s - loss: 17.5733 - enhancedloss: 17.5733 - val_loss: 40.0234 - val_enhancedloss: 40.0234
+Epoch 54/200
+ - 23s - loss: 19.6117 - enhancedloss: 19.6117 - val_loss: 37.4837 - val_enhancedloss: 37.4837
+Epoch 55/200
+ - 23s - loss: 18.1110 - enhancedloss: 18.1110 - val_loss: 13.1647 - val_enhancedloss: 13.1647
+Epoch 56/200
+ - 23s - loss: 18.3312 - enhancedloss: 18.3312 - val_loss: 13.9127 - val_enhancedloss: 13.9127
+Epoch 57/200
+ - 30s - loss: 18.5569 - enhancedloss: 18.5569 - val_loss: 25.3905 - val_enhancedloss: 25.3905
+Epoch 58/200
+ - 29s - loss: 18.3443 - enhancedloss: 18.3443 - val_loss: 28.4410 - val_enhancedloss: 28.4410
+Epoch 59/200
+ - 24s - loss: 16.4694 - enhancedloss: 16.4694 - val_loss: 13.9181 - val_enhancedloss: 13.9181
+Epoch 60/200
+ - 23s - loss: 16.6995 - enhancedloss: 16.6995 - val_loss: 15.6256 - val_enhancedloss: 15.6256
+
+Epoch 00060: saving model to ./tmp/weights_60-15.63.h5
+Epoch 61/200
+ - 27s - loss: 16.4530 - enhancedloss: 16.4530 - val_loss: 35.9293 - val_enhancedloss: 35.9293
+Epoch 62/200
+ - 23s - loss: 16.0526 - enhancedloss: 16.0526 - val_loss: 14.3740 - val_enhancedloss: 14.3740
+Epoch 63/200
+ - 23s - loss: 13.3804 - enhancedloss: 13.3804 - val_loss: 16.3978 - val_enhancedloss: 16.3978
+Epoch 64/200
+ - 36s - loss: 17.9603 - enhancedloss: 17.9603 - val_loss: 24.1576 - val_enhancedloss: 24.1576
+Epoch 65/200
+ - 25s - loss: 17.3161 - enhancedloss: 17.3161 - val_loss: 17.7116 - val_enhancedloss: 17.7116
+Epoch 66/200
+ - 23s - loss: 16.5246 - enhancedloss: 16.5246 - val_loss: 17.8620 - val_enhancedloss: 17.8620
+Epoch 67/200
+ - 25s - loss: 18.4277 - enhancedloss: 18.4277 - val_loss: 11.4041 - val_enhancedloss: 11.4041
+Epoch 68/200
+ - 33s - loss: 17.2335 - enhancedloss: 17.2335 - val_loss: 13.0149 - val_enhancedloss: 13.0149
+Epoch 69/200
+ - 27s - loss: 16.0257 - enhancedloss: 16.0257 - val_loss: 10.4890 - val_enhancedloss: 10.4890
+Epoch 70/200
+ - 23s - loss: 18.1704 - enhancedloss: 18.1704 - val_loss: 25.5964 - val_enhancedloss: 25.5964
+
+Epoch 00070: saving model to ./tmp/weights_70-25.60.h5
+Epoch 71/200
+ - 32s - loss: 14.6201 - enhancedloss: 14.6201 - val_loss: 22.5510 - val_enhancedloss: 22.5510
+Epoch 72/200
+ - 32s - loss: 15.4116 - enhancedloss: 15.4116 - val_loss: 14.6814 - val_enhancedloss: 14.6814
+Epoch 73/200
+ - 25s - loss: 15.5828 - enhancedloss: 15.5828 - val_loss: 13.6297 - val_enhancedloss: 13.6297
+Epoch 74/200
+ - 24s - loss: 14.6238 - enhancedloss: 14.6238 - val_loss: 13.0219 - val_enhancedloss: 13.0219
+Epoch 75/200
+ - 37s - loss: 13.0649 - enhancedloss: 13.0649 - val_loss: 13.8456 - val_enhancedloss: 13.8456
+Epoch 76/200
+ - 31s - loss: 14.7080 - enhancedloss: 14.7080 - val_loss: 16.0736 - val_enhancedloss: 16.0736
+Epoch 77/200
+ - 23s - loss: 16.9757 - enhancedloss: 16.9757 - val_loss: 19.4575 - val_enhancedloss: 19.4575
+Epoch 78/200
+ - 27s - loss: 17.3896 - enhancedloss: 17.3896 - val_loss: 29.3888 - val_enhancedloss: 29.3888
+Epoch 79/200
+ - 37s - loss: 16.5145 - enhancedloss: 16.5145 - val_loss: 13.1601 - val_enhancedloss: 13.1601
+Epoch 80/200
+ - 29s - loss: 14.4074 - enhancedloss: 14.4074 - val_loss: 25.1119 - val_enhancedloss: 25.1119
+
+Epoch 00080: saving model to ./tmp/weights_80-25.11.h5
+Epoch 81/200
+ - 25s - loss: 17.1187 - enhancedloss: 17.1187 - val_loss: 17.5552 - val_enhancedloss: 17.5552
+Epoch 82/200
+ - 39s - loss: 17.1708 - enhancedloss: 17.1708 - val_loss: 18.2647 - val_enhancedloss: 18.2647
+Epoch 83/200
+ - 38s - loss: 17.6624 - enhancedloss: 17.6624 - val_loss: 12.7758 - val_enhancedloss: 12.7758
+Epoch 84/200
+ - 36s - loss: 15.7452 - enhancedloss: 15.7452 - val_loss: 13.4335 - val_enhancedloss: 13.4335
+Epoch 85/200
+ - 37s - loss: 17.3313 - enhancedloss: 17.3313 - val_loss: 13.4913 - val_enhancedloss: 13.4913
+Epoch 86/200
+ - 31s - loss: 15.3607 - enhancedloss: 15.3607 - val_loss: 15.8770 - val_enhancedloss: 15.8770
+Epoch 87/200
+ - 25s - loss: 15.0955 - enhancedloss: 15.0955 - val_loss: 15.6327 - val_enhancedloss: 15.6327
+Epoch 88/200
+ - 40s - loss: 16.7978 - enhancedloss: 16.7978 - val_loss: 17.4637 - val_enhancedloss: 17.4637
+Epoch 89/200
+ - 32s - loss: 15.3384 - enhancedloss: 15.3384 - val_loss: 13.2091 - val_enhancedloss: 13.2091
+Epoch 90/200
+ - 23s - loss: 15.3650 - enhancedloss: 15.3650 - val_loss: 16.6212 - val_enhancedloss: 16.6212
+
+Epoch 00090: saving model to ./tmp/weights_90-16.62.h5
+Epoch 91/200
+ - 37s - loss: 15.0866 - enhancedloss: 15.0866 - val_loss: 13.4149 - val_enhancedloss: 13.4149
+Epoch 92/200
+ - 23s - loss: 16.2654 - enhancedloss: 16.2654 - val_loss: 23.9580 - val_enhancedloss: 23.9580
+Epoch 93/200
+ - 39s - loss: 14.9658 - enhancedloss: 14.9658 - val_loss: 24.0382 - val_enhancedloss: 24.0382
+Epoch 94/200
+ - 29s - loss: 16.2090 - enhancedloss: 16.2090 - val_loss: 14.4131 - val_enhancedloss: 14.4131
+Epoch 95/200
+ - 29s - loss: 13.8991 - enhancedloss: 13.8991 - val_loss: 14.1120 - val_enhancedloss: 14.1120
+Epoch 96/200
+ - 34s - loss: 15.3507 - enhancedloss: 15.3507 - val_loss: 55.9155 - val_enhancedloss: 55.9155
+Epoch 97/200
+ - 23s - loss: 19.5628 - enhancedloss: 19.5628 - val_loss: 13.7465 - val_enhancedloss: 13.7465
+Epoch 98/200
+ - 39s - loss: 14.7024 - enhancedloss: 14.7024 - val_loss: 16.8834 - val_enhancedloss: 16.8834
+Epoch 99/200
+ - 23s - loss: 13.3195 - enhancedloss: 13.3195 - val_loss: 11.9650 - val_enhancedloss: 11.9650
+Epoch 100/200
+ - 38s - loss: 15.3309 - enhancedloss: 15.3309 - val_loss: 14.0255 - val_enhancedloss: 14.0255
+
+Epoch 00100: saving model to ./tmp/weights_100-14.03.h5
+Epoch 101/200
+ - 23s - loss: 15.2255 - enhancedloss: 15.2255 - val_loss: 13.9292 - val_enhancedloss: 13.9292
+Epoch 102/200
+ - 39s - loss: 14.8544 - enhancedloss: 14.8544 - val_loss: 17.0132 - val_enhancedloss: 17.0132
+Epoch 103/200
+ - 35s - loss: 15.5395 - enhancedloss: 15.5395 - val_loss: 36.7245 - val_enhancedloss: 36.7245
+Epoch 104/200
+ - 27s - loss: 14.7661 - enhancedloss: 14.7661 - val_loss: 11.1511 - val_enhancedloss: 11.1511
+Epoch 105/200
+ - 36s - loss: 14.2918 - enhancedloss: 14.2918 - val_loss: 20.3386 - val_enhancedloss: 20.3386
+Epoch 106/200
+ - 32s - loss: 16.0879 - enhancedloss: 16.0879 - val_loss: 11.6843 - val_enhancedloss: 11.6843
+Epoch 107/200
+ - 24s - loss: 14.7178 - enhancedloss: 14.7178 - val_loss: 13.0763 - val_enhancedloss: 13.0763
+Epoch 108/200
+ - 35s - loss: 14.8511 - enhancedloss: 14.8511 - val_loss: 19.1174 - val_enhancedloss: 19.1174
+Epoch 109/200
+ - 33s - loss: 13.9078 - enhancedloss: 13.9078 - val_loss: 13.2106 - val_enhancedloss: 13.2106
+Epoch 110/200
+ - 23s - loss: 15.1170 - enhancedloss: 15.1170 - val_loss: 16.0936 - val_enhancedloss: 16.0936
+
+Epoch 00110: saving model to ./tmp/weights_110-16.09.h5
+Epoch 111/200
+ - 40s - loss: 15.4656 - enhancedloss: 15.4656 - val_loss: 18.2973 - val_enhancedloss: 18.2973
+Epoch 112/200
+ - 33s - loss: 15.3088 - enhancedloss: 15.3088 - val_loss: 19.7089 - val_enhancedloss: 19.7089
+Epoch 113/200
+ - 23s - loss: 15.6291 - enhancedloss: 15.6291 - val_loss: 25.7651 - val_enhancedloss: 25.7651
+Epoch 114/200
+ - 34s - loss: 15.3950 - enhancedloss: 15.3950 - val_loss: 16.8217 - val_enhancedloss: 16.8217
+Epoch 115/200
+ - 38s - loss: 14.9829 - enhancedloss: 14.9829 - val_loss: 13.6400 - val_enhancedloss: 13.6400
+Epoch 116/200
+ - 29s - loss: 14.6122 - enhancedloss: 14.6122 - val_loss: 17.1595 - val_enhancedloss: 17.1595
+Epoch 117/200
+ - 26s - loss: 14.7999 - enhancedloss: 14.7999 - val_loss: 14.6631 - val_enhancedloss: 14.6631
+Epoch 118/200
+ - 37s - loss: 16.6043 - enhancedloss: 16.6043 - val_loss: 17.0489 - val_enhancedloss: 17.0489
+Epoch 119/200
+ - 23s - loss: 15.0624 - enhancedloss: 15.0624 - val_loss: 13.3244 - val_enhancedloss: 13.3244
+Epoch 120/200
+ - 34s - loss: 14.9288 - enhancedloss: 14.9288 - val_loss: 20.6292 - val_enhancedloss: 20.6292
+
+Epoch 00120: saving model to ./tmp/weights_120-20.63.h5
+Epoch 121/200
+ - 37s - loss: 14.4407 - enhancedloss: 14.4407 - val_loss: 16.6151 - val_enhancedloss: 16.6151
+Epoch 122/200
+ - 30s - loss: 14.9870 - enhancedloss: 14.9870 - val_loss: 16.7441 - val_enhancedloss: 16.7441
+Epoch 123/200
+ - 33s - loss: 14.3573 - enhancedloss: 14.3573 - val_loss: 15.0465 - val_enhancedloss: 15.0465
+Epoch 124/200
+ - 32s - loss: 15.5838 - enhancedloss: 15.5838 - val_loss: 20.1016 - val_enhancedloss: 20.1016
+Epoch 125/200
+ - 31s - loss: 15.7374 - enhancedloss: 15.7374 - val_loss: 13.1148 - val_enhancedloss: 13.1148
+Epoch 126/200
+ - 32s - loss: 14.4999 - enhancedloss: 14.4999 - val_loss: 15.4973 - val_enhancedloss: 15.4973
+Epoch 127/200
+ - 37s - loss: 15.8651 - enhancedloss: 15.8651 - val_loss: 16.5013 - val_enhancedloss: 16.5013
+Epoch 128/200
+ - 40s - loss: 17.0121 - enhancedloss: 17.0121 - val_loss: 19.2405 - val_enhancedloss: 19.2405
+Epoch 129/200
+ - 41s - loss: 15.7169 - enhancedloss: 15.7169 - val_loss: 13.6474 - val_enhancedloss: 13.6474
+Epoch 130/200
+ - 41s - loss: 14.9384 - enhancedloss: 14.9384 - val_loss: 14.3012 - val_enhancedloss: 14.3012
+
+Epoch 00130: saving model to ./tmp/weights_130-14.30.h5
+Epoch 131/200
+ - 41s - loss: 13.7616 - enhancedloss: 13.7616 - val_loss: 14.7312 - val_enhancedloss: 14.7312
+Epoch 132/200
+ - 41s - loss: 15.4969 - enhancedloss: 15.4969 - val_loss: 12.6374 - val_enhancedloss: 12.6374
+Epoch 133/200
+ - 41s - loss: 14.7774 - enhancedloss: 14.7774 - val_loss: 17.8029 - val_enhancedloss: 17.8029
+Epoch 134/200
+ - 41s - loss: 12.5218 - enhancedloss: 12.5218 - val_loss: 16.5577 - val_enhancedloss: 16.5577
+Epoch 135/200
+ - 41s - loss: 15.1738 - enhancedloss: 15.1738 - val_loss: 14.8123 - val_enhancedloss: 14.8123
+Epoch 136/200
+ - 42s - loss: 13.6528 - enhancedloss: 13.6528 - val_loss: 13.1623 - val_enhancedloss: 13.1623
+Epoch 137/200
+ - 42s - loss: 15.6141 - enhancedloss: 15.6141 - val_loss: 16.0435 - val_enhancedloss: 16.0435
+Epoch 138/200
+ - 42s - loss: 15.0622 - enhancedloss: 15.0622 - val_loss: 23.1675 - val_enhancedloss: 23.1675
+Epoch 139/200
+ - 42s - loss: 15.4696 - enhancedloss: 15.4696 - val_loss: 12.1853 - val_enhancedloss: 12.1853
+Epoch 140/200
+ - 41s - loss: 13.5095 - enhancedloss: 13.5095 - val_loss: 13.3022 - val_enhancedloss: 13.3022
+
+Epoch 00140: saving model to ./tmp/weights_140-13.30.h5
+Epoch 141/200
+ - 41s - loss: 13.3727 - enhancedloss: 13.3727 - val_loss: 11.8620 - val_enhancedloss: 11.8620
+Epoch 142/200
+ - 41s - loss: 14.6340 - enhancedloss: 14.6340 - val_loss: 15.9714 - val_enhancedloss: 15.9714
+Epoch 143/200
+ - 41s - loss: 16.6352 - enhancedloss: 16.6352 - val_loss: 11.1959 - val_enhancedloss: 11.1959
+Epoch 144/200
+ - 41s - loss: 14.2396 - enhancedloss: 14.2396 - val_loss: 17.4179 - val_enhancedloss: 17.4179
+Epoch 145/200
+ - 41s - loss: 14.2765 - enhancedloss: 14.2765 - val_loss: 13.4793 - val_enhancedloss: 13.4793
+Epoch 146/200
+ - 42s - loss: 16.3566 - enhancedloss: 16.3566 - val_loss: 17.2003 - val_enhancedloss: 17.2003
+Epoch 147/200
+ - 41s - loss: 13.0072 - enhancedloss: 13.0072 - val_loss: 11.1388 - val_enhancedloss: 11.1388
+Epoch 148/200
+ - 41s - loss: 12.2900 - enhancedloss: 12.2900 - val_loss: 12.6012 - val_enhancedloss: 12.6012
+Epoch 149/200
+ - 41s - loss: 14.3123 - enhancedloss: 14.3123 - val_loss: 13.1451 - val_enhancedloss: 13.1451
+Epoch 150/200
+ - 41s - loss: 12.4272 - enhancedloss: 12.4272 - val_loss: 11.8067 - val_enhancedloss: 11.8067
+
+Epoch 00150: saving model to ./tmp/weights_150-11.81.h5
+Epoch 151/200
+ - 41s - loss: 14.7129 - enhancedloss: 14.7129 - val_loss: 16.2819 - val_enhancedloss: 16.2819
+Epoch 152/200
+ - 41s - loss: 13.2513 - enhancedloss: 13.2513 - val_loss: 12.8445 - val_enhancedloss: 12.8445
+Epoch 153/200
+ - 41s - loss: 12.9399 - enhancedloss: 12.9399 - val_loss: 25.7099 - val_enhancedloss: 25.7099
+Epoch 154/200
+ - 41s - loss: 12.5150 - enhancedloss: 12.5150 - val_loss: 31.8478 - val_enhancedloss: 31.8478
+Epoch 155/200
+ - 41s - loss: 14.8974 - enhancedloss: 14.8974 - val_loss: 12.8358 - val_enhancedloss: 12.8358
+Epoch 156/200
+ - 40s - loss: 14.2093 - enhancedloss: 14.2093 - val_loss: 11.4935 - val_enhancedloss: 11.4935
+Epoch 157/200
+ - 41s - loss: 14.2713 - enhancedloss: 14.2713 - val_loss: 13.5267 - val_enhancedloss: 13.5267
+Epoch 158/200
+ - 41s - loss: 14.4499 - enhancedloss: 14.4499 - val_loss: 13.5424 - val_enhancedloss: 13.5424
+Epoch 159/200
+ - 41s - loss: 12.9714 - enhancedloss: 12.9714 - val_loss: 15.5923 - val_enhancedloss: 15.5923
+Epoch 160/200
+ - 41s - loss: 15.0392 - enhancedloss: 15.0392 - val_loss: 13.7646 - val_enhancedloss: 13.7646
+
+Epoch 00160: saving model to ./tmp/weights_160-13.76.h5
+Epoch 161/200
+ - 41s - loss: 13.2595 - enhancedloss: 13.2595 - val_loss: 11.5514 - val_enhancedloss: 11.5514
+Epoch 162/200
+ - 42s - loss: 13.7902 - enhancedloss: 13.7902 - val_loss: 11.9772 - val_enhancedloss: 11.9772
+Epoch 163/200
+ - 41s - loss: 14.9139 - enhancedloss: 14.9139 - val_loss: 11.7253 - val_enhancedloss: 11.7253
+Epoch 164/200
+ - 41s - loss: 14.3547 - enhancedloss: 14.3547 - val_loss: 12.5982 - val_enhancedloss: 12.5982
+Epoch 165/200
+ - 41s - loss: 13.6689 - enhancedloss: 13.6689 - val_loss: 11.7906 - val_enhancedloss: 11.7906
+Epoch 166/200
+ - 41s - loss: 13.4418 - enhancedloss: 13.4418 - val_loss: 13.1135 - val_enhancedloss: 13.1135
+Epoch 167/200
+ - 41s - loss: 14.7107 - enhancedloss: 14.7107 - val_loss: 35.9337 - val_enhancedloss: 35.9337
+Epoch 168/200
+ - 41s - loss: 12.3154 - enhancedloss: 12.3154 - val_loss: 13.4378 - val_enhancedloss: 13.4378
+Epoch 169/200
+ - 41s - loss: 13.1536 - enhancedloss: 13.1536 - val_loss: 13.6209 - val_enhancedloss: 13.6209
+Epoch 170/200
+ - 41s - loss: 14.0456 - enhancedloss: 14.0456 - val_loss: 12.0104 - val_enhancedloss: 12.0104
+
+Epoch 00170: saving model to ./tmp/weights_170-12.01.h5
+Epoch 171/200
+ - 41s - loss: 14.5014 - enhancedloss: 14.5014 - val_loss: 20.8035 - val_enhancedloss: 20.8035
+Epoch 172/200
+ - 41s - loss: 13.8725 - enhancedloss: 13.8725 - val_loss: 28.6502 - val_enhancedloss: 28.6502
+Epoch 173/200
+ - 42s - loss: 13.7911 - enhancedloss: 13.7911 - val_loss: 13.9024 - val_enhancedloss: 13.9024
+Epoch 174/200
+ - 42s - loss: 11.8865 - enhancedloss: 11.8865 - val_loss: 22.0981 - val_enhancedloss: 22.0981
+Epoch 175/200
+ - 41s - loss: 14.2978 - enhancedloss: 14.2978 - val_loss: 13.3602 - val_enhancedloss: 13.3602
+Epoch 176/200
+ - 41s - loss: 13.3124 - enhancedloss: 13.3124 - val_loss: 15.1237 - val_enhancedloss: 15.1237
+Epoch 177/200
+ - 42s - loss: 13.4788 - enhancedloss: 13.4788 - val_loss: 15.3522 - val_enhancedloss: 15.3522
+Epoch 178/200
+ - 42s - loss: 13.6576 - enhancedloss: 13.6576 - val_loss: 13.1227 - val_enhancedloss: 13.1227
+Epoch 179/200
+ - 42s - loss: 12.9621 - enhancedloss: 12.9621 - val_loss: 18.5497 - val_enhancedloss: 18.5497
+Epoch 180/200
+ - 41s - loss: 13.2142 - enhancedloss: 13.2142 - val_loss: 13.9128 - val_enhancedloss: 13.9128
+
+Epoch 00180: saving model to ./tmp/weights_180-13.91.h5
+Epoch 181/200
+ - 41s - loss: 12.2469 - enhancedloss: 12.2469 - val_loss: 14.3083 - val_enhancedloss: 14.3083
+Epoch 182/200
+ - 41s - loss: 13.4944 - enhancedloss: 13.4944 - val_loss: 10.6150 - val_enhancedloss: 10.6150
+Epoch 183/200
+ - 41s - loss: 12.7315 - enhancedloss: 12.7315 - val_loss: 12.2168 - val_enhancedloss: 12.2168
+Epoch 184/200
+ - 41s - loss: 13.7595 - enhancedloss: 13.7595 - val_loss: 12.4583 - val_enhancedloss: 12.4583
+Epoch 185/200
+ - 41s - loss: 13.0598 - enhancedloss: 13.0598 - val_loss: 28.4770 - val_enhancedloss: 28.4770
+Epoch 186/200
+ - 41s - loss: 14.2931 - enhancedloss: 14.2931 - val_loss: 34.3870 - val_enhancedloss: 34.3870
+Epoch 187/200
+ - 41s - loss: 12.9642 - enhancedloss: 12.9642 - val_loss: 11.2174 - val_enhancedloss: 11.2174
+Epoch 188/200
+ - 41s - loss: 11.7861 - enhancedloss: 11.7861 - val_loss: 14.8414 - val_enhancedloss: 14.8414
+Epoch 189/200
+ - 41s - loss: 12.2646 - enhancedloss: 12.2646 - val_loss: 12.2931 - val_enhancedloss: 12.2931
+Epoch 190/200
+ - 41s - loss: 13.1682 - enhancedloss: 13.1682 - val_loss: 15.6958 - val_enhancedloss: 15.6958
+
+Epoch 00190: saving model to ./tmp/weights_190-15.70.h5
+Epoch 191/200
+ - 41s - loss: 13.9678 - enhancedloss: 13.9678 - val_loss: 12.6196 - val_enhancedloss: 12.6196
+Epoch 192/200
+ - 41s - loss: 12.1393 - enhancedloss: 12.1393 - val_loss: 12.1835 - val_enhancedloss: 12.1835
+Epoch 193/200
+ - 41s - loss: 14.9500 - enhancedloss: 14.9500 - val_loss: 13.4781 - val_enhancedloss: 13.4781
+Epoch 194/200
+ - 41s - loss: 13.1841 - enhancedloss: 13.1841 - val_loss: 13.3962 - val_enhancedloss: 13.3962
+Epoch 195/200
+ - 41s - loss: 13.5590 - enhancedloss: 13.5590 - val_loss: 18.7990 - val_enhancedloss: 18.7990
+Epoch 196/200
+ - 42s - loss: 13.1013 - enhancedloss: 13.1013 - val_loss: 13.7704 - val_enhancedloss: 13.7704
+Epoch 197/200
+ - 41s - loss: 13.2087 - enhancedloss: 13.2087 - val_loss: 14.9150 - val_enhancedloss: 14.9150
+Epoch 198/200
+ - 41s - loss: 15.2205 - enhancedloss: 15.2205 - val_loss: 13.4368 - val_enhancedloss: 13.4368
+Epoch 199/200
+ - 42s - loss: 14.8031 - enhancedloss: 14.8031 - val_loss: 15.2255 - val_enhancedloss: 15.2255
+Epoch 200/200
+ - 42s - loss: 13.2919 - enhancedloss: 13.2919 - val_loss: 12.1048 - val_enhancedloss: 12.1048
+
+Epoch 00200: saving model to ./tmp/weights_200-12.10.h5
+===>Test set BER  0.08974333333333333

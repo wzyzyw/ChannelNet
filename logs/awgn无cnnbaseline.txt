@@ -1,0 +1,11 @@
+注：
+python信道编码，未通过cnn去噪时ber性能（baseline）
+Namespace(M=2, add_mode='sequence', batch_size=100, block_len=100, channel='awgn', code_rate_k=1, code_rate_n=3, dropout=0.5, enc1=7, enc2=5, enc_clipping='both', enc_grad_limit=0.01, enc_quantize_level=2, enc_value_limit=1.0, feedback=7, init_nw_weight='./models/torch_model_decoder_036718.pt', is_parallel=0, is_train=True, kernel_size=3, lr=0.0001, momentum=0.9, no_cuda=False, num_block=14000, num_epoch=300, num_iteration=6, num_layer=14, num_test_block=6000, optimizer='adam', precompute_norm_stats=False, print_pos_ber=False, print_pos_power=False, print_test_traj=False, rec_quantize=False, rec_quantize_level=2, rec_quantize_limit=1.0, snr_interval=5, snr_points=9, snr_test_end=16.0, snr_test_start=-5.0, test_channel_mode='block_norm', test_ratio=1, train_channel_high=15.0, train_channel_low=-5.0, train_channel_mode='block_norm')
+[Convolutional Code Codec] Encoder M  [2]  Generator Matrix  [[7 5]]  Feedback  7
+current snr= -5.0
+current snr= 0.0
+current snr= 5.0
+current snr= 10.0
+current snr= 15.0
+===>Test set SNR  [-5.0, 0.0, 5.0, 10.0, 15.0]
+===>Test set BER  [0.08143261904761905, 0.10366809523809524, 0.07879119047619047, 0.02440452380952381, 0.0010402380952380952]

@@ -1,0 +1,65 @@
+1. 922002_log训练结果，bervssnr
+Namespace(M=2, add_mode='sequence', batch_size=100, block_len=100, channel='awgn', code_rate_k=1, code_rate_n=3, dropout=0.5, enc1=7, enc2=5, enc_clipping='both', enc_grad_limit=0.01, enc_quantize_level=2, enc_value_limit=1.0, feedback=7, init_nw_weight='./models/torch_model_decoder_036718.pt', is_parallel=0, is_train=True, kernel_size=3, lr=0.001, momentum=0.9, no_cuda=False, num_block=7000, num_epoch=300, num_iteration=6, num_layer=14, num_test_block=3000, optimizer='adam', precompute_norm_stats=False, print_pos_ber=False, print_pos_power=False, print_test_traj=False, rec_quantize=False, rec_quantize_level=2, rec_quantize_limit=1.0, snr_interval=5, snr_points=9, snr_test_end=16.0, snr_test_start=-5.0, test_channel_mode='block_norm', test_ratio=1, train_channel_high=15.0, train_channel_low=15.0, train_channel_mode='block_norm')
+[Convolutional Code Codec] Encoder M  [2]  Generator Matrix  [[7 5]]  Feedback  7
+current snr= -5.0
+current snr= 0.0
+current snr= 5.0
+current snr= 10.0
+current snr= 15.0
+===>Test set SNR  [-5.0, 0.0, 5.0, 10.0, 15.0]
+===>Test set BER  [0.08191809523809523, 0.10447714285714285, 0.07916095238095239, 0.024677142857142856, 0.0011038095238095238]
+
+2. 263411_log训练结果，bervssnr
+Namespace(M=2, add_mode='sequence', batch_size=100, block_len=100, channel='awgn', code_rate_k=1, code_rate_n=3, dropout=0.5, enc1=7, enc2=5, enc_clipping='both', enc_grad_limit=0.01, enc_quantize_level=2, enc_value_limit=1.0, feedback=7, init_nw_weight='./models/torch_model_decoder_036718.pt', is_parallel=0, is_train=True, kernel_size=3, lr=0.0001, momentum=0.9, no_cuda=False, num_block=14000, num_epoch=500, num_iteration=6, num_layer=14, num_test_block=6000, optimizer='adam', precompute_norm_stats=False, print_pos_ber=False, print_pos_power=False, print_test_traj=False, rec_quantize=False, rec_quantize_level=2, rec_quantize_limit=1.0, snr_interval=5, snr_points=9, snr_test_end=16.0, snr_test_start=-5.0, test_channel_mode='block_norm', test_ratio=1, train_channel_high=15.0, train_channel_low=-5.0, train_channel_mode='block_norm')
+[Convolutional Code Codec] Encoder M  [2]  Generator Matrix  [[7 5]]  Feedback  7
+current snr= -5.0
+current snr= 0.0
+current snr= 5.0
+current snr= 10.0
+current snr= 15.0
+===>Test set SNR  [-5.0, 0.0, 5.0, 10.0, 15.0]
+===>Test set BER  [0.23117428571428572, 0.0879295238095238, 0.008968333333333333, 0.0005561904761904762, 7.380952380952381e-06]
+
+3. 809014log训练结果，bervssnr
+Namespace(M=2, add_mode='sequence', batch_size=100, block_len=100, channel='awgn', code_rate_k=1, code_rate_n=3, dropout=0.5, enc1=7, enc2=5, enc_clipping='both', enc_grad_limit=0.01, enc_quantize_level=2, enc_value_limit=1.0, feedback=7, init_nw_weight='./models/torch_model_decoder_036718.pt', is_parallel=0, is_train=True, kernel_size=3, lr=0.0001, momentum=0.9, no_cuda=False, num_block=14000, num_epoch=500, num_iteration=6, num_layer=14, num_test_block=6000, optimizer='adam', precompute_norm_stats=False, print_pos_ber=False, print_pos_power=False, print_test_traj=False, rec_quantize=False, rec_quantize_level=2, rec_quantize_limit=1.0, snr_interval=5, snr_points=9, snr_test_end=16.0, snr_test_start=-5.0, test_channel_mode='block_norm', test_ratio=1, train_channel_high=16.0, train_channel_low=-5.0, train_channel_mode='block_norm')
+[Convolutional Code Codec] Encoder M  [2]  Generator Matrix  [[7 5]]  Feedback  7
+current snr= -5.0
+current snr= 0.0
+current snr= 5.0
+current snr= 10.0
+current snr= 15.0
+===>Test set SNR  [-5.0, 0.0, 5.0, 10.0, 15.0]
+===>Test set BER  [0.24466428571428572, 0.09589071428571429, 0.008946428571428572, 0.0003692857142857143, 2.380952380952381e-07]
+
+4. 080753log训练结果，bervssnr
+Namespace(M=2, add_mode='sequence', batch_size=100, block_len=100, channel='awgn', code_rate_k=1, code_rate_n=3, dropout=0.5, enc1=7, enc2=5, enc_clipping='both', enc_grad_limit=0.01, enc_quantize_level=2, enc_value_limit=1.0, feedback=7, init_nw_weight='./models/torch_model_decoder_036718.pt', is_parallel=0, is_train=True, kernel_size=3, lr=0.0001, momentum=0.9, no_cuda=False, num_block=14000, num_epoch=300, num_iteration=6, num_layer=14, num_test_block=6000, optimizer='adam', precompute_norm_stats=False, print_pos_ber=False, print_pos_power=False, print_test_traj=False, rec_quantize=False, rec_quantize_level=2, rec_quantize_limit=1.0, snr_interval=5, snr_points=9, snr_test_end=16.0, snr_test_start=-5.0, test_channel_mode='block_norm', test_ratio=1, train_channel_high=15.0, train_channel_low=-5.0, train_channel_mode='block_norm')
+[Convolutional Code Codec] Encoder M  [2]  Generator Matrix  [[7 5]]  Feedback  7
+current snr= -5.0
+current snr= 0.0
+current snr= 5.0
+current snr= 10.0
+current snr= 15.0
+===>Test set SNR  [-5.0, 0.0, 5.0, 10.0, 15.0]
+===>Test set BER  [0.19808404761904763, 0.0939202380952381, 0.01191404761904762, 0.0009680952380952381, 2.0952380952380954e-05]
+
+5. 034909log训练结果，bervssnr
+Namespace(M=2, add_mode='sequence', batch_size=100, block_len=100, channel='awgn', code_rate_k=1, code_rate_n=3, dropout=0.5, enc1=7, enc2=5, enc_clipping='both', enc_grad_limit=0.01, enc_quantize_level=2, enc_value_limit=1.0, feedback=7, init_nw_weight='./models/torch_model_decoder_036718.pt', is_parallel=0, is_train=True, kernel_size=3, lr=0.0001, momentum=0.9, no_cuda=False, num_block=7000, num_epoch=200, num_iteration=6, num_layer=18, num_test_block=3000, optimizer='adam', precompute_norm_stats=False, print_pos_ber=False, print_pos_power=False, print_test_traj=False, rec_quantize=False, rec_quantize_level=2, rec_quantize_limit=1.0, snr_interval=5, snr_points=9, snr_test_end=16.0, snr_test_start=-5.0, test_channel_mode='block_norm', test_ratio=1, train_channel_high=15.0, train_channel_low=15.0, train_channel_mode='block_norm')
+[Convolutional Code Codec] Encoder M  [2]  Generator Matrix  [[7 5]]  Feedback  7
+current snr= -5.0
+current snr= 0.0
+current snr= 5.0
+current snr= 10.0
+current snr= 15.0
+===>Test set SNR  [-5.0, 0.0, 5.0, 10.0, 15.0]
+===>Test set BER  [0.19808571428571428, 0.11848380952380952, 0.013645238095238096, 0.0010480952380952382, 4.380952380952381e-05]
+
+6. 129006log训练结果，bervssnr
+Namespace(M=2, add_mode='sequence', batch_size=100, block_len=100, channel='awgn', code_rate_k=1, code_rate_n=3, dropout=0.5, enc1=7, enc2=5, enc_clipping='both', enc_grad_limit=0.01, enc_quantize_level=2, enc_value_limit=1.0, feedback=7, init_nw_weight='./models/torch_model_decoder_036718.pt', is_parallel=0, is_train=True, kernel_size=3, lr=0.0001, momentum=0.9, no_cuda=False, num_block=7000, num_epoch=200, num_iteration=6, num_layer=14, num_test_block=3000, optimizer='adam', precompute_norm_stats=False, print_pos_ber=False, print_pos_power=False, print_test_traj=False, rec_quantize=False, rec_quantize_level=2, rec_quantize_limit=1.0, snr_interval=5, snr_points=9, snr_test_end=16.0, snr_test_start=-5.0, test_channel_mode='block_norm', test_ratio=1, train_channel_high=15.0, train_channel_low=15.0, train_channel_mode='block_norm')
+[Convolutional Code Codec] Encoder M  [2]  Generator Matrix  [[7 5]]  Feedback  7
+current snr= -5.0
+current snr= 0.0
+current snr= 5.0
+current snr= 10.0
+current snr= 15.0
+===>Test set SNR  [-5.0, 0.0, 5.0, 10.0, 15.0]
+===>Test set BER  [0.06774, 0.06123619047619048, 0.03151190476190476, 0.0030504761904761907, 1.380952380952381e-05]

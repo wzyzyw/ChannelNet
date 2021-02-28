@@ -1,11 +1,15 @@
 
-import numpy as np
-from turbocode import turbo
 import sys
-from get_args import get_args
 import time
-from models import DNCNN_train,DNCNN_predict,errors
+
+import numpy as np
+
+from get_args import get_args
+from models import DNCNN_predict, DNCNN_train, errors
+from turbocode import turbo
 from utils2 import generateEncodeData
+
+
 class Logger(object):
     def __init__(self, filename, stream=sys.stdout):
         self.terminal = stream

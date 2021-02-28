@@ -50,10 +50,10 @@ def get_args():
     parser.add_argument('-snr_test_end', type=float, default=16.0)
     parser.add_argument('-snr_points', type=int, default=9)
 
-    parser.add_argument('-batch_size', type=int, default=100  )
-    parser.add_argument('-num_epoch', type=int, default=200)
+    parser.add_argument('-batch_size', type=int, default=100)
+    parser.add_argument('-num_epoch', type=int, default=300)
     parser.add_argument('-test_ratio', type=int, default=1,help = 'only for high SNR testing')
-    parser.add_argument('-add_mode',type=str,default='sequence',help='generate random snr or sequence noise')
+    parser.add_argument('-add_mode',type=str,default='random',help='generate random snr or sequence noise')
     parser.add_argument('-snr_interval',type=int,default=5,help='sequence noise snr interval')
     # block length related
     parser.add_argument('-block_len', type=int, default=100)
@@ -82,7 +82,7 @@ def get_args():
     # Optimizer related parameters
     ################################################################
     parser.add_argument('-optimizer', choices=['adam', 'lookahead', 'sgd'], default='adam', help = '....:)')
-    parser.add_argument('-lr', type = float, default=0.0001, help='decoder leanring rate')
+    parser.add_argument('-lr', type = float, default=0.001, help='decoder leanring rate')
     parser.add_argument('-momentum', type = float, default=0.9)
 
 

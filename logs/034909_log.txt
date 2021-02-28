@@ -1,5 +1,5 @@
 注：
-每个batch随机添加[-5,15]db的噪声，loss难降
+每个batch随机添加[-5,15]db的噪声，同时noisemap作为输入的一部分，loss难降
 Namespace(M=2, batch_size=100, block_len=100, channel='awgn', code_rate_k=1, code_rate_n=3, dropout=0.5, enc1=7, enc2=5, enc_clipping='both', enc_grad_limit=0.01, enc_quantize_level=2, enc_value_limit=1.0, feedback=7, init_nw_weight='./models/torch_model_decoder_036718.pt', is_parallel=0, is_train=True, kernel_size=3, lr=0.001, momentum=0.9, no_cuda=False, num_block=7000, num_epoch=500, num_iteration=6, num_layer=18, num_test_block=3000, optimizer='adam', precompute_norm_stats=False, print_pos_ber=False, print_pos_power=False, print_test_traj=False, rec_quantize=False, rec_quantize_level=2, rec_quantize_limit=1.0, snr_points=9, snr_test_end=15.0, snr_test_start=15.0, test_channel_mode='block_norm', test_ratio=1, train_channel_high=15.0, train_channel_low=-5.0, train_channel_mode='block_norm')
 [Convolutional Code Codec] Encoder M  [2]  Generator Matrix  [[7 5]]  Feedback  7
 batch_idx= 0 noise sigma= [0.88703359] this_snr= [1.04119867]

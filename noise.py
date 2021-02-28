@@ -8,8 +8,8 @@ class bikappa():
     def __init__(self):
         print("bikappa noise generate")
         self.K=1
-        self.H=3
-        self.L=-3
+        self.H=1
+        self.L=-1
         self.bins=100
         self.sigma=30
         param={
