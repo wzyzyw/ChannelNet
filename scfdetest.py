@@ -40,15 +40,15 @@ if __name__=='__main__':
     print(args)
 
     myturbo=turbo(args)
-    identity=667633
+    identity=701114
     sigmalist,snrlist=getnoisesigma(args.snr_test_start,args.snr_test_end,interval=args.snr_interval,mode=args.add_mode)
     bers=[]
     for sigma,snr in zip(sigmalist,snrlist):
         print("current snr=",snr)
         X_test_data,test_input,test_noise=generateEncodeData_test(args,'test',myturbo,sigma)
-        test_label=test_input-test_noise
+        test_label=test_input[:,:,:3]-test_noise
         test_output=DNCNN_predict(args,test_input,args.channel,identity)
-        denoisesig=test_input-test_output
+        denoisesig=test_input[:,:,:3]-test_output
         # denoisesig=test_input
         # # channel decode
         # test_label_decodebits=channeldecode(args,myturbo,test_label,'test')

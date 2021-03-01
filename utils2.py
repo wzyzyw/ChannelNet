@@ -103,8 +103,10 @@ def generateEncodeData(args,mode,turbo):
 	# BPSK 
 	codes=codes*2-1
 	received_codes=codes + fwd_noise
-	# inputdata=np.concatenate((received_codes,noisemap),axis=2)
-	inputdata=received_codes
+	if args.use_noisemap:
+		inputdata=np.concatenate((received_codes,noisemap),axis=2)
+	else:
+		inputdata=received_codes
 	return (X,inputdata,fwd_noise)
 def generateEncodeData_test(args,mode,turbo,this_sigma):
 	if mode=="train":
@@ -130,9 +132,10 @@ def generateEncodeData_test(args,mode,turbo,this_sigma):
 	# BPSK 
 	codes=codes*2-1
 	received_codes=codes + fwd_noise
-	
-	# inputdata=np.concatenate((received_codes,noisemap),axis=2)
-	inputdata=received_codes
+	if args.use_noisemap:
+		inputdata=np.concatenate((received_codes,noisemap),axis=2)
+	else:
+		inputdata=received_codes
 	return (X,inputdata,fwd_noise)
 def trainer(args,model,epoch,optimizer,criterion,turbo,use_cuda=False,verbose=True):
 	device = torch.device("cuda" if use_cuda else "cpu")

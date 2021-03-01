@@ -46,14 +46,14 @@ if __name__=='__main__':
     myturbo=turbo(args)
     X_train_data,train_input,train_noise=generateEncodeData(args,'train',myturbo)
     X_valid_data,valid_input,valid_noise=generateEncodeData(args,'test',myturbo)
-    train_label=train_input-train_noise
-    valid_label=valid_input-valid_noise
+    train_label=train_input[:,:,:3]-train_noise
+    valid_label=valid_input[:,:,:3]-valid_noise
     DNCNN_train(args,train_input,train_noise,valid_input,valid_noise,args.channel,identity)
     # # identity=542302
     X_test_data,test_input,test_noise=generateEncodeData(args,'test',myturbo)
-    test_label=test_input-test_noise
+    test_label=test_input[:,:,:3]-test_noise
     test_output=DNCNN_predict(args,test_input,args.channel,identity)
-    denoisesig=test_input-test_output
+    denoisesig=test_input[:,:,:3]-test_output
     # # channel decode
     # test_label_decodebits=channeldecode(args,myturbo,test_label,'test')
     # test_output_decodebits=channeldecode(args,myturbo,test_output,'test')

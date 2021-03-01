@@ -59,7 +59,11 @@ def errors(y_true, y_pred):
     myOtherTensor = K.not_equal(y_true, K.round(y_pred))
     return K.mean(tf.cast(myOtherTensor, tf.float32))
 def DNCNN_model (args):
-    input_shape = (args.block_len, args.code_rate_n)
+    if args.use_normaltest:
+        myloss=enhancedloss
+    else:
+        myloss='mean_squared_error' 
+    input_shape = (args.block_len, args.code_rate_n+1 if args.use_noisemap else args.code_rate_n)
     inpt = Input(shape=input_shape)
     # 1st layer, Conv+relu
     x = Conv1D(filters=64, kernel_size=args.kernel_size, strides=1,padding='same')(inpt)
@@ -74,8 +78,8 @@ def DNCNN_model (args):
     # x = Subtract()([inpt, x])   # input - noise
     model = Model(inputs=inpt, outputs=x)
     adam = Adam(lr=args.lr, beta_1=0.9, beta_2=0.999, epsilon=1e-8) 
-    model.compile(optimizer=adam, loss=enhancedloss, metrics=[enhancedloss])  
-    # model.compile(optimizer=adam, loss='binary_crossentropy', metrics=['binary_crossentropy'])  'mean_squared_error'   
+    model.compile(optimizer=adam, loss=myloss, metrics=[myloss])  
+    # model.compile(optimizer=adam, loss='binary_crossentropy', metrics=['binary_crossentropy'])    
     
     return model
 

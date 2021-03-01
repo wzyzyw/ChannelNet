@@ -53,8 +53,10 @@ def get_args():
     parser.add_argument('-batch_size', type=int, default=100)
     parser.add_argument('-num_epoch', type=int, default=300)
     parser.add_argument('-test_ratio', type=int, default=1,help = 'only for high SNR testing')
-    parser.add_argument('-add_mode',type=str,default='random',help='generate random snr or sequence noise')
+    parser.add_argument('-add_mode',type=str,default='sequence',help='generate random snr or sequence noise')
     parser.add_argument('-snr_interval',type=int,default=5,help='sequence noise snr interval')
+    parser.add_argument('-use_noisemap',default=False,help='whether use noisemap as input data')
+    parser.add_argument('-use_normaltest',default=False,help='whether use normal test as loss')
     # block length related
     parser.add_argument('-block_len', type=int, default=100)
 
