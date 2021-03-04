@@ -6,7 +6,7 @@ import numpy as np
 
 from get_args import get_args
 from models import DNCNN_predict, DNCNN_train, errors
-from turbocode import turbo
+from turbocode import turbo,matlabturbo,classicalturbo
 from utils2 import generateEncodeData
 
 
@@ -42,8 +42,12 @@ if __name__=='__main__':
 
     args = get_args()
     print(args)
-
-    myturbo=turbo(args)
+    if args.dec_alg=="pythonturbo":
+        myturbo=turbo(args)
+    elif args.dec_alg=="matlabturbo2":
+        myturbo=classicalturbo()
+    else:
+        raise Exception("error turbo!!!")
     X_train_data,train_input,train_noise=generateEncodeData(args,'train',myturbo)
     X_valid_data,valid_input,valid_noise=generateEncodeData(args,'test',myturbo)
     train_label=train_input[:,:,:3]-train_noise

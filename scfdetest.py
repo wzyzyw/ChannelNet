@@ -1,6 +1,6 @@
 
 import numpy as np
-from turbocode import turbo
+from turbocode import turbo,matlabturbo,classicalturbo
 import sys
 from get_args import get_args
 import time
@@ -39,8 +39,13 @@ if __name__=='__main__':
     args = get_args()
     print(args)
 
-    myturbo=turbo(args)
-    identity=701114
+    if args.dec_alg=="pythonturbo":
+        myturbo=turbo(args)
+    elif args.dec_alg=="matlabturbo2":
+        myturbo=classicalturbo()
+    else:
+        raise Exception("error turbo!!!")
+    identity=333827
     sigmalist,snrlist=getnoisesigma(args.snr_test_start,args.snr_test_end,interval=args.snr_interval,mode=args.add_mode)
     bers=[]
     for sigma,snr in zip(sigmalist,snrlist):

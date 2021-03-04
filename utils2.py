@@ -19,7 +19,7 @@ import time
 from noise import generate_noise
 
 def snr_db2sigma(train_snr):
-    return 10**(-train_snr*1.0/20)
+    return 10**(-train_snr*1.0/10)
 def getnoisesigma(snr_low=0.0,snr_high=0.0,interval=1,length=1,mode='random'):
 	sigmalist=[]
 	snrlist=[]
@@ -29,7 +29,7 @@ def getnoisesigma(snr_low=0.0,snr_high=0.0,interval=1,length=1,mode='random'):
 		for i in range(length):
 			# mixture of noise sigma.
 			this_sigma = (this_sigma_low - this_sigma_high) * np.random.rand(1) + this_sigma_high  #每个batch添加相同的噪声
-			this_snr=-20.0 * np.log10(this_sigma)
+			this_snr=-10.0 * np.log10(this_sigma)
 			sigmalist.append(this_sigma)
 			snrlist.append(this_snr)
 	else: 
@@ -93,10 +93,9 @@ def generateEncodeData(args,mode,turbo):
 		tmp=np.random.randint(0,2,(args.block_len,args.code_rate_k))
 		X[idx_batch,:,:]=tmp
 		tmp=np.array(tmp,dtype="float64")
-		sys,par1,par2=turbo.encoder(tmp)
-		X_train[idx_batch,:,0]=sys
-		X_train[idx_batch,:,1]=par1
-		X_train[idx_batch,:,2]=par2
+		encodedata=turbo.encoder(tmp)
+		for i in range(args.code_rate_n):
+			X_train[idx_batch,:,i]=encodedata[i]
 		fwd_noise[idx_batch,:,:]= generate_noise(noise_shape, args, this_sigma)
 		noisemap[idx_batch,:,:]=this_sigma*np.ones((args.block_len,1))
 	codes=X_train
@@ -122,10 +121,9 @@ def generateEncodeData_test(args,mode,turbo,this_sigma):
 		tmp=np.random.randint(0,2,(args.block_len,args.code_rate_k))
 		X[idx_batch,:,:]=tmp
 		tmp=np.array(tmp,dtype="float64")
-		sys,par1,par2=turbo.encoder(tmp)
-		X_train[idx_batch,:,0]=sys
-		X_train[idx_batch,:,1]=par1
-		X_train[idx_batch,:,2]=par2
+		encodedata=turbo.encoder(tmp)
+		for i in range(args.code_rate_n):
+			X_train[idx_batch,:,i]=encodedata[i]
 		fwd_noise[idx_batch,:,:]= generate_noise(noise_shape, args, this_sigma)
 		noisemap[idx_batch,:,:]=this_sigma*np.ones((args.block_len,1))
 	codes=X_train

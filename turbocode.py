@@ -4,7 +4,8 @@ import commpy.channelcoding.turbo as dturbo
 import commpy.channelcoding.convcode as cc
 import commpy.channelcoding.interleavers as RandInterlv
 import time
-
+from matinterface import Cmatlab
+# 译码bug暂时可以不用管，
 class turbo():
     def __init__(self,args):
         M=np.array([args.M])
@@ -40,7 +41,44 @@ class turbo():
         snr=10**(snr/10)
         npower=sigpower/snr
         return npower
-        
+class classicalturbo(turbo):
+    # 找到的matlab只适用与bpsk，其他调制方法不行，该模块暂时放弃
+    def __init__(self,args):
+        super().__init__(args)
+        self._info=args
+        g=[[1,1,1],[1,0,1]]
+        self._g=np.array(g,dtype="float64")
+        self._m=float(self._g.shape[1]-1)
+        self._matlabinter=Cmatlab()
+        self._puncture=0.0
+        self._mydecalg='logmap'
+        self._coderate=1/(2+self._puncture)
+    def encoder(self,x):
+        L_total=x.shape[0]+self._m
+        self.interleaverindex=self.interleaver(L_total)
+        tmp=self._matlabinter.classicalturboencode(x,self._g,self.interleaverindex,self._puncture)
+        par1=tmp[:self._info.block_len,0]
+        par2=tmp[self._info.block_len:,0]
+        return (par1,par2)
+
+    def decoder(self,r,snr):
+        L_total=float(self._info.block_len+self._m)
+        en=10**(snr/10)
+        L_c=float(4*en*self._coderate)
+        tmp=self._matlabinter.classicalturbodecode(r,self.interleaverindex,self._puncture,L_c,L_total,self._mydecalg,self._info.num_iteration,self._g,self._m)
+        return tmp
+# matlab自带的turbo码有bug，编码前后长度不是整数倍
+class matlabturbo(turbo):
+    def __init__(self,msglen):
+        self.interleaverindex=self.interleaver(msglen)
+        self._matlabinter=Cmatlab()
+    def encoder(self,x):
+        tmp=self._matlabinter.turboencode(x,self.interleaverindex)
+        par1=tmp[:]
+        return tmp
+    def decoder(self,y,snr):
+        tmp=self._matlabinter.turbodecode(y,self.interleaverindex)
+        return tmp  
 if __name__ == "__main__":
     puncture=0.0
     coderate=1/(2+puncture)

@@ -1,0 +1,766 @@
+注：
+python turbo编码，间隔选取，有noisemap，无normaltest，bikappa噪声
+Namespace(M=2, add_mode='sequence', batch_size=100, block_len=100, channel='bikappa', code_rate_k=1, code_rate_n=3, dropout=0.5, enc1=7, enc2=5, enc_clipping='both', enc_grad_limit=0.01, enc_quantize_level=2, enc_value_limit=1.0, feedback=7, init_nw_weight='./models/torch_model_decoder_036718.pt', is_parallel=0, is_train=True, kernel_size=3, lr=0.001, momentum=0.9, no_cuda=False, num_block=7000, num_epoch=300, num_iteration=6, num_layer=14, num_test_block=3000, optimizer='adam', precompute_norm_stats=False, print_pos_ber=False, print_pos_power=False, print_test_traj=False, rec_quantize=False, rec_quantize_level=2, rec_quantize_limit=1.0, snr_interval=5, snr_points=9, snr_test_end=16.0, snr_test_start=-5.0, test_channel_mode='block_norm', test_ratio=1, train_channel_high=16.0, train_channel_low=-5.0, train_channel_mode='block_norm', use_noisemap=True, use_normaltest=False)
+[Convolutional Code Codec] Encoder M  [2]  Generator Matrix  [[7 5]]  Feedback  7
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+input_1 (InputLayer)         (None, 100, 4)            0         
+_________________________________________________________________
+conv1d_1 (Conv1D)            (None, 100, 64)           832       
+_________________________________________________________________
+activation_1 (Activation)    (None, 100, 64)           0         
+_________________________________________________________________
+conv1d_2 (Conv1D)            (None, 100, 64)           12352     
+_________________________________________________________________
+batch_normalization_1 (Batch (None, 100, 64)           256       
+_________________________________________________________________
+activation_2 (Activation)    (None, 100, 64)           0         
+_________________________________________________________________
+conv1d_3 (Conv1D)            (None, 100, 64)           12352     
+_________________________________________________________________
+batch_normalization_2 (Batch (None, 100, 64)           256       
+_________________________________________________________________
+activation_3 (Activation)    (None, 100, 64)           0         
+_________________________________________________________________
+conv1d_4 (Conv1D)            (None, 100, 64)           12352     
+_________________________________________________________________
+batch_normalization_3 (Batch (None, 100, 64)           256       
+_________________________________________________________________
+activation_4 (Activation)    (None, 100, 64)           0         
+_________________________________________________________________
+conv1d_5 (Conv1D)            (None, 100, 64)           12352     
+_________________________________________________________________
+batch_normalization_4 (Batch (None, 100, 64)           256       
+_________________________________________________________________
+activation_5 (Activation)    (None, 100, 64)           0         
+_________________________________________________________________
+conv1d_6 (Conv1D)            (None, 100, 64)           12352     
+_________________________________________________________________
+batch_normalization_5 (Batch (None, 100, 64)           256       
+_________________________________________________________________
+activation_6 (Activation)    (None, 100, 64)           0         
+_________________________________________________________________
+conv1d_7 (Conv1D)            (None, 100, 64)           12352     
+_________________________________________________________________
+batch_normalization_6 (Batch (None, 100, 64)           256       
+_________________________________________________________________
+activation_7 (Activation)    (None, 100, 64)           0         
+_________________________________________________________________
+conv1d_8 (Conv1D)            (None, 100, 64)           12352     
+_________________________________________________________________
+batch_normalization_7 (Batch (None, 100, 64)           256       
+_________________________________________________________________
+activation_8 (Activation)    (None, 100, 64)           0         
+_________________________________________________________________
+conv1d_9 (Conv1D)            (None, 100, 64)           12352     
+_________________________________________________________________
+batch_normalization_8 (Batch (None, 100, 64)           256       
+_________________________________________________________________
+activation_9 (Activation)    (None, 100, 64)           0         
+_________________________________________________________________
+conv1d_10 (Conv1D)           (None, 100, 64)           12352     
+_________________________________________________________________
+batch_normalization_9 (Batch (None, 100, 64)           256       
+_________________________________________________________________
+activation_10 (Activation)   (None, 100, 64)           0         
+_________________________________________________________________
+conv1d_11 (Conv1D)           (None, 100, 64)           12352     
+_________________________________________________________________
+batch_normalization_10 (Batc (None, 100, 64)           256       
+_________________________________________________________________
+activation_11 (Activation)   (None, 100, 64)           0         
+_________________________________________________________________
+conv1d_12 (Conv1D)           (None, 100, 64)           12352     
+_________________________________________________________________
+batch_normalization_11 (Batc (None, 100, 64)           256       
+_________________________________________________________________
+activation_12 (Activation)   (None, 100, 64)           0         
+_________________________________________________________________
+conv1d_13 (Conv1D)           (None, 100, 64)           12352     
+_________________________________________________________________
+batch_normalization_12 (Batc (None, 100, 64)           256       
+_________________________________________________________________
+activation_13 (Activation)   (None, 100, 64)           0         
+_________________________________________________________________
+conv1d_14 (Conv1D)           (None, 100, 64)           12352     
+_________________________________________________________________
+batch_normalization_13 (Batc (None, 100, 64)           256       
+_________________________________________________________________
+activation_14 (Activation)   (None, 100, 64)           0         
+_________________________________________________________________
+conv1d_15 (Conv1D)           (None, 100, 64)           12352     
+_________________________________________________________________
+batch_normalization_14 (Batc (None, 100, 64)           256       
+_________________________________________________________________
+activation_15 (Activation)   (None, 100, 64)           0         
+_________________________________________________________________
+conv1d_16 (Conv1D)           (None, 100, 3)            579       
+=================================================================
+Total params: 177,923
+Trainable params: 176,131
+Non-trainable params: 1,792
+_________________________________________________________________
+None
+Train on 7000 samples, validate on 3000 samples
+Epoch 1/300
+ - 14s - loss: 0.1462 - mean_squared_error: 0.1462 - val_loss: 0.1139 - val_mean_squared_error: 0.1139
+Epoch 2/300
+ - 5s - loss: 0.0938 - mean_squared_error: 0.0938 - val_loss: 0.0967 - val_mean_squared_error: 0.0967
+Epoch 3/300
+ - 5s - loss: 0.0927 - mean_squared_error: 0.0927 - val_loss: 0.0930 - val_mean_squared_error: 0.0930
+Epoch 4/300
+ - 5s - loss: 0.0913 - mean_squared_error: 0.0913 - val_loss: 0.0928 - val_mean_squared_error: 0.0928
+Epoch 5/300
+ - 5s - loss: 0.0899 - mean_squared_error: 0.0899 - val_loss: 0.0926 - val_mean_squared_error: 0.0926
+Epoch 6/300
+ - 5s - loss: 0.0876 - mean_squared_error: 0.0876 - val_loss: 0.0955 - val_mean_squared_error: 0.0955
+Epoch 7/300
+ - 5s - loss: 0.0838 - mean_squared_error: 0.0838 - val_loss: 0.0995 - val_mean_squared_error: 0.0995
+Epoch 8/300
+ - 5s - loss: 0.0789 - mean_squared_error: 0.0789 - val_loss: 0.1029 - val_mean_squared_error: 0.1029
+Epoch 9/300
+ - 5s - loss: 0.0740 - mean_squared_error: 0.0740 - val_loss: 0.1143 - val_mean_squared_error: 0.1143
+Epoch 10/300
+ - 5s - loss: 0.0706 - mean_squared_error: 0.0706 - val_loss: 0.1106 - val_mean_squared_error: 0.1106
+
+Epoch 00010: saving model to ./tmp/weights_10-0.11.h5
+Epoch 11/300
+ - 5s - loss: 0.0687 - mean_squared_error: 0.0687 - val_loss: 0.0996 - val_mean_squared_error: 0.0996
+Epoch 12/300
+ - 5s - loss: 0.0669 - mean_squared_error: 0.0669 - val_loss: 0.0898 - val_mean_squared_error: 0.0898
+Epoch 13/300
+ - 5s - loss: 0.0642 - mean_squared_error: 0.0642 - val_loss: 0.0775 - val_mean_squared_error: 0.0775
+Epoch 14/300
+ - 5s - loss: 0.0596 - mean_squared_error: 0.0596 - val_loss: 0.0721 - val_mean_squared_error: 0.0721
+Epoch 15/300
+ - 5s - loss: 0.0496 - mean_squared_error: 0.0496 - val_loss: 0.0736 - val_mean_squared_error: 0.0736
+Epoch 16/300
+ - 5s - loss: 0.0367 - mean_squared_error: 0.0367 - val_loss: 0.0784 - val_mean_squared_error: 0.0784
+Epoch 17/300
+ - 5s - loss: 0.0313 - mean_squared_error: 0.0313 - val_loss: 0.0705 - val_mean_squared_error: 0.0705
+Epoch 18/300
+ - 5s - loss: 0.0290 - mean_squared_error: 0.0290 - val_loss: 0.0598 - val_mean_squared_error: 0.0598
+Epoch 19/300
+ - 5s - loss: 0.0271 - mean_squared_error: 0.0271 - val_loss: 0.0553 - val_mean_squared_error: 0.0553
+Epoch 20/300
+ - 5s - loss: 0.0248 - mean_squared_error: 0.0248 - val_loss: 0.0555 - val_mean_squared_error: 0.0555
+
+Epoch 00020: saving model to ./tmp/weights_20-0.06.h5
+Epoch 21/300
+ - 5s - loss: 0.0226 - mean_squared_error: 0.0226 - val_loss: 0.0548 - val_mean_squared_error: 0.0548
+Epoch 22/300
+ - 5s - loss: 0.0197 - mean_squared_error: 0.0197 - val_loss: 0.0576 - val_mean_squared_error: 0.0576
+Epoch 23/300
+ - 5s - loss: 0.0098 - mean_squared_error: 0.0098 - val_loss: 0.0619 - val_mean_squared_error: 0.0619
+Epoch 24/300
+ - 5s - loss: 0.0070 - mean_squared_error: 0.0070 - val_loss: 0.0427 - val_mean_squared_error: 0.0427
+Epoch 25/300
+ - 5s - loss: 0.0060 - mean_squared_error: 0.0060 - val_loss: 0.0364 - val_mean_squared_error: 0.0364
+Epoch 26/300
+ - 5s - loss: 0.0053 - mean_squared_error: 0.0053 - val_loss: 0.0269 - val_mean_squared_error: 0.0269
+Epoch 27/300
+ - 5s - loss: 0.0048 - mean_squared_error: 0.0048 - val_loss: 0.0221 - val_mean_squared_error: 0.0221
+Epoch 28/300
+ - 5s - loss: 0.0044 - mean_squared_error: 0.0044 - val_loss: 0.0180 - val_mean_squared_error: 0.0180
+Epoch 29/300
+ - 5s - loss: 0.0041 - mean_squared_error: 0.0041 - val_loss: 0.0146 - val_mean_squared_error: 0.0146
+Epoch 30/300
+ - 5s - loss: 0.0038 - mean_squared_error: 0.0038 - val_loss: 0.0123 - val_mean_squared_error: 0.0123
+
+Epoch 00030: saving model to ./tmp/weights_30-0.01.h5
+Epoch 31/300
+ - 5s - loss: 0.0035 - mean_squared_error: 0.0035 - val_loss: 0.0120 - val_mean_squared_error: 0.0120
+Epoch 32/300
+ - 5s - loss: 0.0033 - mean_squared_error: 0.0033 - val_loss: 0.0098 - val_mean_squared_error: 0.0098
+Epoch 33/300
+ - 5s - loss: 0.0031 - mean_squared_error: 0.0031 - val_loss: 0.0093 - val_mean_squared_error: 0.0093
+Epoch 34/300
+ - 5s - loss: 0.0029 - mean_squared_error: 0.0029 - val_loss: 0.0091 - val_mean_squared_error: 0.0091
+Epoch 35/300
+ - 5s - loss: 0.0027 - mean_squared_error: 0.0027 - val_loss: 0.0062 - val_mean_squared_error: 0.0062
+Epoch 36/300
+ - 5s - loss: 0.0026 - mean_squared_error: 0.0026 - val_loss: 0.0073 - val_mean_squared_error: 0.0073
+Epoch 37/300
+ - 5s - loss: 0.0025 - mean_squared_error: 0.0025 - val_loss: 0.0073 - val_mean_squared_error: 0.0073
+Epoch 38/300
+ - 5s - loss: 0.0024 - mean_squared_error: 0.0024 - val_loss: 0.0061 - val_mean_squared_error: 0.0061
+Epoch 39/300
+ - 5s - loss: 0.0023 - mean_squared_error: 0.0023 - val_loss: 0.0063 - val_mean_squared_error: 0.0063
+Epoch 40/300
+ - 5s - loss: 0.0022 - mean_squared_error: 0.0022 - val_loss: 0.0056 - val_mean_squared_error: 0.0056
+
+Epoch 00040: saving model to ./tmp/weights_40-0.01.h5
+Epoch 41/300
+ - 5s - loss: 0.0021 - mean_squared_error: 0.0021 - val_loss: 0.0052 - val_mean_squared_error: 0.0052
+Epoch 42/300
+ - 5s - loss: 0.0020 - mean_squared_error: 0.0020 - val_loss: 0.0050 - val_mean_squared_error: 0.0050
+Epoch 43/300
+ - 5s - loss: 0.0020 - mean_squared_error: 0.0020 - val_loss: 0.0056 - val_mean_squared_error: 0.0056
+Epoch 44/300
+ - 5s - loss: 0.0019 - mean_squared_error: 0.0019 - val_loss: 0.0047 - val_mean_squared_error: 0.0047
+Epoch 45/300
+ - 5s - loss: 0.0019 - mean_squared_error: 0.0019 - val_loss: 0.0047 - val_mean_squared_error: 0.0047
+Epoch 46/300
+ - 5s - loss: 0.0017 - mean_squared_error: 0.0017 - val_loss: 0.0039 - val_mean_squared_error: 0.0039
+Epoch 47/300
+ - 5s - loss: 0.0017 - mean_squared_error: 0.0017 - val_loss: 0.0038 - val_mean_squared_error: 0.0038
+Epoch 48/300
+ - 5s - loss: 0.0017 - mean_squared_error: 0.0017 - val_loss: 0.0045 - val_mean_squared_error: 0.0045
+Epoch 49/300
+ - 5s - loss: 0.0017 - mean_squared_error: 0.0017 - val_loss: 0.0037 - val_mean_squared_error: 0.0037
+Epoch 50/300
+ - 5s - loss: 0.0017 - mean_squared_error: 0.0017 - val_loss: 0.0036 - val_mean_squared_error: 0.0036
+
+Epoch 00050: saving model to ./tmp/weights_50-0.00.h5
+Epoch 51/300
+ - 5s - loss: 0.0016 - mean_squared_error: 0.0016 - val_loss: 0.0037 - val_mean_squared_error: 0.0037
+Epoch 52/300
+ - 5s - loss: 0.0016 - mean_squared_error: 0.0016 - val_loss: 0.0044 - val_mean_squared_error: 0.0044
+Epoch 53/300
+ - 5s - loss: 0.0015 - mean_squared_error: 0.0015 - val_loss: 0.0042 - val_mean_squared_error: 0.0042
+Epoch 54/300
+ - 5s - loss: 0.0015 - mean_squared_error: 0.0015 - val_loss: 0.0036 - val_mean_squared_error: 0.0036
+Epoch 55/300
+ - 5s - loss: 0.0015 - mean_squared_error: 0.0015 - val_loss: 0.0032 - val_mean_squared_error: 0.0032
+Epoch 56/300
+ - 5s - loss: 0.0014 - mean_squared_error: 0.0014 - val_loss: 0.0035 - val_mean_squared_error: 0.0035
+Epoch 57/300
+ - 5s - loss: 0.0014 - mean_squared_error: 0.0014 - val_loss: 0.0038 - val_mean_squared_error: 0.0038
+Epoch 58/300
+ - 5s - loss: 0.0014 - mean_squared_error: 0.0014 - val_loss: 0.0029 - val_mean_squared_error: 0.0029
+Epoch 59/300
+ - 5s - loss: 0.0013 - mean_squared_error: 0.0013 - val_loss: 0.0025 - val_mean_squared_error: 0.0025
+Epoch 60/300
+ - 5s - loss: 0.0013 - mean_squared_error: 0.0013 - val_loss: 0.0029 - val_mean_squared_error: 0.0029
+
+Epoch 00060: saving model to ./tmp/weights_60-0.00.h5
+Epoch 61/300
+ - 5s - loss: 0.0013 - mean_squared_error: 0.0013 - val_loss: 0.0029 - val_mean_squared_error: 0.0029
+Epoch 62/300
+ - 5s - loss: 0.0013 - mean_squared_error: 0.0013 - val_loss: 0.0031 - val_mean_squared_error: 0.0031
+Epoch 63/300
+ - 5s - loss: 0.0013 - mean_squared_error: 0.0013 - val_loss: 0.0033 - val_mean_squared_error: 0.0033
+Epoch 64/300
+ - 5s - loss: 0.0013 - mean_squared_error: 0.0013 - val_loss: 0.0029 - val_mean_squared_error: 0.0029
+Epoch 65/300
+ - 5s - loss: 0.0012 - mean_squared_error: 0.0012 - val_loss: 0.0019 - val_mean_squared_error: 0.0019
+Epoch 66/300
+ - 5s - loss: 0.0012 - mean_squared_error: 0.0012 - val_loss: 0.0023 - val_mean_squared_error: 0.0023
+Epoch 67/300
+ - 5s - loss: 0.0012 - mean_squared_error: 0.0012 - val_loss: 0.0022 - val_mean_squared_error: 0.0022
+Epoch 68/300
+ - 5s - loss: 0.0012 - mean_squared_error: 0.0012 - val_loss: 0.0021 - val_mean_squared_error: 0.0021
+Epoch 69/300
+ - 5s - loss: 0.0011 - mean_squared_error: 0.0011 - val_loss: 0.0024 - val_mean_squared_error: 0.0024
+Epoch 70/300
+ - 5s - loss: 0.0010 - mean_squared_error: 0.0010 - val_loss: 0.0025 - val_mean_squared_error: 0.0025
+
+Epoch 00070: saving model to ./tmp/weights_70-0.00.h5
+Epoch 71/300
+ - 5s - loss: 0.0010 - mean_squared_error: 0.0010 - val_loss: 0.0032 - val_mean_squared_error: 0.0032
+Epoch 72/300
+ - 5s - loss: 0.0010 - mean_squared_error: 0.0010 - val_loss: 0.0027 - val_mean_squared_error: 0.0027
+Epoch 73/300
+ - 5s - loss: 9.6587e-04 - mean_squared_error: 9.6587e-04 - val_loss: 0.0018 - val_mean_squared_error: 0.0018
+Epoch 74/300
+ - 5s - loss: 9.3170e-04 - mean_squared_error: 9.3170e-04 - val_loss: 0.0029 - val_mean_squared_error: 0.0029
+Epoch 75/300
+ - 5s - loss: 9.3073e-04 - mean_squared_error: 9.3073e-04 - val_loss: 0.0023 - val_mean_squared_error: 0.0023
+Epoch 76/300
+ - 5s - loss: 8.9616e-04 - mean_squared_error: 8.9616e-04 - val_loss: 0.0019 - val_mean_squared_error: 0.0019
+Epoch 77/300
+ - 5s - loss: 9.5457e-04 - mean_squared_error: 9.5457e-04 - val_loss: 0.0029 - val_mean_squared_error: 0.0029
+Epoch 78/300
+ - 5s - loss: 9.1705e-04 - mean_squared_error: 9.1705e-04 - val_loss: 0.0026 - val_mean_squared_error: 0.0026
+Epoch 79/300
+ - 5s - loss: 8.5622e-04 - mean_squared_error: 8.5622e-04 - val_loss: 0.0024 - val_mean_squared_error: 0.0024
+Epoch 80/300
+ - 5s - loss: 8.9750e-04 - mean_squared_error: 8.9750e-04 - val_loss: 0.0021 - val_mean_squared_error: 0.0021
+
+Epoch 00080: saving model to ./tmp/weights_80-0.00.h5
+Epoch 81/300
+ - 5s - loss: 8.3634e-04 - mean_squared_error: 8.3634e-04 - val_loss: 0.0017 - val_mean_squared_error: 0.0017
+Epoch 82/300
+ - 5s - loss: 8.1512e-04 - mean_squared_error: 8.1512e-04 - val_loss: 0.0015 - val_mean_squared_error: 0.0015
+Epoch 83/300
+ - 5s - loss: 8.0546e-04 - mean_squared_error: 8.0546e-04 - val_loss: 0.0022 - val_mean_squared_error: 0.0022
+Epoch 84/300
+ - 5s - loss: 8.4938e-04 - mean_squared_error: 8.4938e-04 - val_loss: 0.0018 - val_mean_squared_error: 0.0018
+Epoch 85/300
+ - 5s - loss: 8.1416e-04 - mean_squared_error: 8.1416e-04 - val_loss: 0.0021 - val_mean_squared_error: 0.0021
+Epoch 86/300
+ - 5s - loss: 7.9904e-04 - mean_squared_error: 7.9904e-04 - val_loss: 0.0021 - val_mean_squared_error: 0.0021
+Epoch 87/300
+ - 5s - loss: 7.9949e-04 - mean_squared_error: 7.9949e-04 - val_loss: 0.0021 - val_mean_squared_error: 0.0021
+Epoch 88/300
+ - 5s - loss: 8.6905e-04 - mean_squared_error: 8.6905e-04 - val_loss: 0.0021 - val_mean_squared_error: 0.0021
+Epoch 89/300
+ - 5s - loss: 7.9015e-04 - mean_squared_error: 7.9015e-04 - val_loss: 0.0015 - val_mean_squared_error: 0.0015
+Epoch 90/300
+ - 5s - loss: 7.5090e-04 - mean_squared_error: 7.5090e-04 - val_loss: 0.0018 - val_mean_squared_error: 0.0018
+
+Epoch 00090: saving model to ./tmp/weights_90-0.00.h5
+Epoch 91/300
+ - 5s - loss: 8.1169e-04 - mean_squared_error: 8.1169e-04 - val_loss: 0.0020 - val_mean_squared_error: 0.0020
+Epoch 92/300
+ - 5s - loss: 7.4864e-04 - mean_squared_error: 7.4864e-04 - val_loss: 0.0015 - val_mean_squared_error: 0.0015
+Epoch 93/300
+ - 5s - loss: 7.7262e-04 - mean_squared_error: 7.7262e-04 - val_loss: 0.0015 - val_mean_squared_error: 0.0015
+Epoch 94/300
+ - 5s - loss: 7.3440e-04 - mean_squared_error: 7.3440e-04 - val_loss: 0.0029 - val_mean_squared_error: 0.0029
+Epoch 95/300
+ - 5s - loss: 7.3008e-04 - mean_squared_error: 7.3008e-04 - val_loss: 0.0017 - val_mean_squared_error: 0.0017
+Epoch 96/300
+ - 5s - loss: 7.5973e-04 - mean_squared_error: 7.5973e-04 - val_loss: 0.0014 - val_mean_squared_error: 0.0014
+Epoch 97/300
+ - 5s - loss: 7.6091e-04 - mean_squared_error: 7.6091e-04 - val_loss: 0.0019 - val_mean_squared_error: 0.0019
+Epoch 98/300
+ - 5s - loss: 7.0062e-04 - mean_squared_error: 7.0062e-04 - val_loss: 0.0017 - val_mean_squared_error: 0.0017
+Epoch 99/300
+ - 5s - loss: 7.2989e-04 - mean_squared_error: 7.2989e-04 - val_loss: 0.0023 - val_mean_squared_error: 0.0023
+Epoch 100/300
+ - 5s - loss: 7.2511e-04 - mean_squared_error: 7.2511e-04 - val_loss: 0.0018 - val_mean_squared_error: 0.0018
+
+Epoch 00100: saving model to ./tmp/weights_100-0.00.h5
+Epoch 101/300
+ - 5s - loss: 7.3213e-04 - mean_squared_error: 7.3213e-04 - val_loss: 0.0013 - val_mean_squared_error: 0.0013
+Epoch 102/300
+ - 5s - loss: 7.4042e-04 - mean_squared_error: 7.4042e-04 - val_loss: 0.0022 - val_mean_squared_error: 0.0022
+Epoch 103/300
+ - 5s - loss: 6.8282e-04 - mean_squared_error: 6.8282e-04 - val_loss: 0.0019 - val_mean_squared_error: 0.0019
+Epoch 104/300
+ - 5s - loss: 6.9142e-04 - mean_squared_error: 6.9142e-04 - val_loss: 0.0013 - val_mean_squared_error: 0.0013
+Epoch 105/300
+ - 5s - loss: 6.8010e-04 - mean_squared_error: 6.8010e-04 - val_loss: 0.0015 - val_mean_squared_error: 0.0015
+Epoch 106/300
+ - 5s - loss: 6.7047e-04 - mean_squared_error: 6.7047e-04 - val_loss: 0.0016 - val_mean_squared_error: 0.0016
+Epoch 107/300
+ - 5s - loss: 6.3903e-04 - mean_squared_error: 6.3903e-04 - val_loss: 0.0013 - val_mean_squared_error: 0.0013
+Epoch 108/300
+ - 5s - loss: 5.8073e-04 - mean_squared_error: 5.8073e-04 - val_loss: 0.0017 - val_mean_squared_error: 0.0017
+Epoch 109/300
+ - 5s - loss: 5.7824e-04 - mean_squared_error: 5.7824e-04 - val_loss: 0.0010 - val_mean_squared_error: 0.0010
+Epoch 110/300
+ - 5s - loss: 5.8884e-04 - mean_squared_error: 5.8884e-04 - val_loss: 0.0015 - val_mean_squared_error: 0.0015
+
+Epoch 00110: saving model to ./tmp/weights_110-0.00.h5
+Epoch 111/300
+ - 5s - loss: 5.8136e-04 - mean_squared_error: 5.8136e-04 - val_loss: 7.5530e-04 - val_mean_squared_error: 7.5530e-04
+Epoch 112/300
+ - 5s - loss: 5.1709e-04 - mean_squared_error: 5.1709e-04 - val_loss: 0.0031 - val_mean_squared_error: 0.0031
+Epoch 113/300
+ - 5s - loss: 4.9939e-04 - mean_squared_error: 4.9939e-04 - val_loss: 0.0013 - val_mean_squared_error: 0.0013
+Epoch 114/300
+ - 5s - loss: 4.9041e-04 - mean_squared_error: 4.9041e-04 - val_loss: 0.0012 - val_mean_squared_error: 0.0012
+Epoch 115/300
+ - 5s - loss: 3.9126e-04 - mean_squared_error: 3.9126e-04 - val_loss: 0.0016 - val_mean_squared_error: 0.0016
+Epoch 116/300
+ - 5s - loss: 4.1138e-04 - mean_squared_error: 4.1138e-04 - val_loss: 0.0010 - val_mean_squared_error: 0.0010
+Epoch 117/300
+ - 5s - loss: 4.1629e-04 - mean_squared_error: 4.1629e-04 - val_loss: 0.0013 - val_mean_squared_error: 0.0013
+Epoch 118/300
+ - 5s - loss: 3.6108e-04 - mean_squared_error: 3.6108e-04 - val_loss: 0.0010 - val_mean_squared_error: 0.0010
+Epoch 119/300
+ - 5s - loss: 3.4404e-04 - mean_squared_error: 3.4404e-04 - val_loss: 0.0012 - val_mean_squared_error: 0.0012
+Epoch 120/300
+ - 5s - loss: 3.5623e-04 - mean_squared_error: 3.5623e-04 - val_loss: 9.9654e-04 - val_mean_squared_error: 9.9654e-04
+
+Epoch 00120: saving model to ./tmp/weights_120-0.00.h5
+Epoch 121/300
+ - 5s - loss: 3.3401e-04 - mean_squared_error: 3.3401e-04 - val_loss: 0.0014 - val_mean_squared_error: 0.0014
+Epoch 122/300
+ - 5s - loss: 3.2324e-04 - mean_squared_error: 3.2324e-04 - val_loss: 0.0012 - val_mean_squared_error: 0.0012
+Epoch 123/300
+ - 5s - loss: 3.8230e-04 - mean_squared_error: 3.8230e-04 - val_loss: 0.0010 - val_mean_squared_error: 0.0010
+Epoch 124/300
+ - 5s - loss: 3.2257e-04 - mean_squared_error: 3.2257e-04 - val_loss: 7.3728e-04 - val_mean_squared_error: 7.3728e-04
+Epoch 125/300
+ - 5s - loss: 3.4302e-04 - mean_squared_error: 3.4302e-04 - val_loss: 7.8029e-04 - val_mean_squared_error: 7.8029e-04
+Epoch 126/300
+ - 5s - loss: 3.2374e-04 - mean_squared_error: 3.2374e-04 - val_loss: 6.9114e-04 - val_mean_squared_error: 6.9114e-04
+Epoch 127/300
+ - 5s - loss: 3.2891e-04 - mean_squared_error: 3.2891e-04 - val_loss: 0.0028 - val_mean_squared_error: 0.0028
+Epoch 128/300
+ - 5s - loss: 3.7508e-04 - mean_squared_error: 3.7508e-04 - val_loss: 9.0980e-04 - val_mean_squared_error: 9.0980e-04
+Epoch 129/300
+ - 5s - loss: 3.4458e-04 - mean_squared_error: 3.4458e-04 - val_loss: 8.1301e-04 - val_mean_squared_error: 8.1301e-04
+Epoch 130/300
+ - 5s - loss: 3.2677e-04 - mean_squared_error: 3.2677e-04 - val_loss: 0.0011 - val_mean_squared_error: 0.0011
+
+Epoch 00130: saving model to ./tmp/weights_130-0.00.h5
+Epoch 131/300
+ - 5s - loss: 3.5428e-04 - mean_squared_error: 3.5428e-04 - val_loss: 0.0011 - val_mean_squared_error: 0.0011
+Epoch 132/300
+ - 5s - loss: 2.9796e-04 - mean_squared_error: 2.9796e-04 - val_loss: 8.3746e-04 - val_mean_squared_error: 8.3746e-04
+Epoch 133/300
+ - 5s - loss: 3.2571e-04 - mean_squared_error: 3.2571e-04 - val_loss: 9.1703e-04 - val_mean_squared_error: 9.1703e-04
+Epoch 134/300
+ - 5s - loss: 4.8983e-04 - mean_squared_error: 4.8983e-04 - val_loss: 0.6281 - val_mean_squared_error: 0.6281
+Epoch 135/300
+ - 5s - loss: 5.8413e-04 - mean_squared_error: 5.8413e-04 - val_loss: 0.0062 - val_mean_squared_error: 0.0062
+Epoch 136/300
+ - 5s - loss: 4.1459e-04 - mean_squared_error: 4.1459e-04 - val_loss: 0.0034 - val_mean_squared_error: 0.0034
+Epoch 137/300
+ - 5s - loss: 4.4053e-04 - mean_squared_error: 4.4053e-04 - val_loss: 0.0025 - val_mean_squared_error: 0.0025
+Epoch 138/300
+ - 5s - loss: 3.4844e-04 - mean_squared_error: 3.4844e-04 - val_loss: 0.0018 - val_mean_squared_error: 0.0018
+Epoch 139/300
+ - 5s - loss: 3.4587e-04 - mean_squared_error: 3.4587e-04 - val_loss: 0.0014 - val_mean_squared_error: 0.0014
+Epoch 140/300
+ - 5s - loss: 3.1468e-04 - mean_squared_error: 3.1468e-04 - val_loss: 0.0015 - val_mean_squared_error: 0.0015
+
+Epoch 00140: saving model to ./tmp/weights_140-0.00.h5
+Epoch 141/300
+ - 5s - loss: 3.4686e-04 - mean_squared_error: 3.4686e-04 - val_loss: 9.2134e-04 - val_mean_squared_error: 9.2134e-04
+Epoch 142/300
+ - 5s - loss: 3.1862e-04 - mean_squared_error: 3.1862e-04 - val_loss: 0.0011 - val_mean_squared_error: 0.0011
+Epoch 143/300
+ - 5s - loss: 3.3370e-04 - mean_squared_error: 3.3370e-04 - val_loss: 5.8844e-04 - val_mean_squared_error: 5.8844e-04
+Epoch 144/300
+ - 5s - loss: 3.3575e-04 - mean_squared_error: 3.3575e-04 - val_loss: 8.8335e-04 - val_mean_squared_error: 8.8335e-04
+Epoch 145/300
+ - 5s - loss: 3.3811e-04 - mean_squared_error: 3.3811e-04 - val_loss: 9.4734e-04 - val_mean_squared_error: 9.4734e-04
+Epoch 146/300
+ - 5s - loss: 3.1184e-04 - mean_squared_error: 3.1184e-04 - val_loss: 0.0010 - val_mean_squared_error: 0.0010
+Epoch 147/300
+ - 5s - loss: 3.1747e-04 - mean_squared_error: 3.1747e-04 - val_loss: 7.0105e-04 - val_mean_squared_error: 7.0105e-04
+Epoch 148/300
+ - 5s - loss: 2.5149e-04 - mean_squared_error: 2.5149e-04 - val_loss: 7.0752e-04 - val_mean_squared_error: 7.0752e-04
+Epoch 149/300
+ - 5s - loss: 2.5379e-04 - mean_squared_error: 2.5379e-04 - val_loss: 6.9140e-04 - val_mean_squared_error: 6.9140e-04
+Epoch 150/300
+ - 5s - loss: 2.9051e-04 - mean_squared_error: 2.9051e-04 - val_loss: 6.3844e-04 - val_mean_squared_error: 6.3844e-04
+
+Epoch 00150: saving model to ./tmp/weights_150-0.00.h5
+Epoch 151/300
+ - 5s - loss: 3.2086e-04 - mean_squared_error: 3.2086e-04 - val_loss: 5.6836e-04 - val_mean_squared_error: 5.6836e-04
+Epoch 152/300
+ - 5s - loss: 2.8359e-04 - mean_squared_error: 2.8359e-04 - val_loss: 5.8748e-04 - val_mean_squared_error: 5.8748e-04
+Epoch 153/300
+ - 5s - loss: 2.6526e-04 - mean_squared_error: 2.6526e-04 - val_loss: 5.1429e-04 - val_mean_squared_error: 5.1429e-04
+Epoch 154/300
+ - 5s - loss: 2.7390e-04 - mean_squared_error: 2.7390e-04 - val_loss: 7.9094e-04 - val_mean_squared_error: 7.9094e-04
+Epoch 155/300
+ - 5s - loss: 2.7167e-04 - mean_squared_error: 2.7167e-04 - val_loss: 7.4640e-04 - val_mean_squared_error: 7.4640e-04
+Epoch 156/300
+ - 5s - loss: 2.5339e-04 - mean_squared_error: 2.5339e-04 - val_loss: 6.3674e-04 - val_mean_squared_error: 6.3674e-04
+Epoch 157/300
+ - 5s - loss: 2.8130e-04 - mean_squared_error: 2.8130e-04 - val_loss: 7.8629e-04 - val_mean_squared_error: 7.8629e-04
+Epoch 158/300
+ - 5s - loss: 2.9160e-04 - mean_squared_error: 2.9160e-04 - val_loss: 5.1073e-04 - val_mean_squared_error: 5.1073e-04
+Epoch 159/300
+ - 5s - loss: 2.9789e-04 - mean_squared_error: 2.9789e-04 - val_loss: 7.7112e-04 - val_mean_squared_error: 7.7112e-04
+Epoch 160/300
+ - 6s - loss: 2.4525e-04 - mean_squared_error: 2.4525e-04 - val_loss: 5.8059e-04 - val_mean_squared_error: 5.8059e-04
+
+Epoch 00160: saving model to ./tmp/weights_160-0.00.h5
+Epoch 161/300
+ - 5s - loss: 2.6290e-04 - mean_squared_error: 2.6290e-04 - val_loss: 0.0014 - val_mean_squared_error: 0.0014
+Epoch 162/300
+ - 5s - loss: 2.6289e-04 - mean_squared_error: 2.6289e-04 - val_loss: 3.3741e-04 - val_mean_squared_error: 3.3741e-04
+Epoch 163/300
+ - 5s - loss: 2.6379e-04 - mean_squared_error: 2.6379e-04 - val_loss: 5.0567e-04 - val_mean_squared_error: 5.0567e-04
+Epoch 164/300
+ - 5s - loss: 2.4675e-04 - mean_squared_error: 2.4675e-04 - val_loss: 3.7860e-04 - val_mean_squared_error: 3.7860e-04
+Epoch 165/300
+ - 5s - loss: 2.2972e-04 - mean_squared_error: 2.2972e-04 - val_loss: 6.0015e-04 - val_mean_squared_error: 6.0015e-04
+Epoch 166/300
+ - 5s - loss: 2.4814e-04 - mean_squared_error: 2.4814e-04 - val_loss: 5.2282e-04 - val_mean_squared_error: 5.2282e-04
+Epoch 167/300
+ - 5s - loss: 2.7285e-04 - mean_squared_error: 2.7285e-04 - val_loss: 6.5582e-04 - val_mean_squared_error: 6.5582e-04
+Epoch 168/300
+ - 5s - loss: 2.5105e-04 - mean_squared_error: 2.5105e-04 - val_loss: 5.1660e-04 - val_mean_squared_error: 5.1660e-04
+Epoch 169/300
+ - 5s - loss: 2.9519e-04 - mean_squared_error: 2.9519e-04 - val_loss: 4.1624e-04 - val_mean_squared_error: 4.1624e-04
+Epoch 170/300
+ - 5s - loss: 2.7934e-04 - mean_squared_error: 2.7934e-04 - val_loss: 8.0040e-04 - val_mean_squared_error: 8.0040e-04
+
+Epoch 00170: saving model to ./tmp/weights_170-0.00.h5
+Epoch 171/300
+ - 5s - loss: 2.4819e-04 - mean_squared_error: 2.4819e-04 - val_loss: 0.0199 - val_mean_squared_error: 0.0199
+Epoch 172/300
+ - 5s - loss: 2.9525e-04 - mean_squared_error: 2.9525e-04 - val_loss: 6.6429e-04 - val_mean_squared_error: 6.6429e-04
+Epoch 173/300
+ - 5s - loss: 2.6985e-04 - mean_squared_error: 2.6985e-04 - val_loss: 4.3687e-04 - val_mean_squared_error: 4.3687e-04
+Epoch 174/300
+ - 5s - loss: 2.6082e-04 - mean_squared_error: 2.6082e-04 - val_loss: 4.3729e-04 - val_mean_squared_error: 4.3729e-04
+Epoch 175/300
+ - 5s - loss: 2.8708e-04 - mean_squared_error: 2.8708e-04 - val_loss: 6.2800e-04 - val_mean_squared_error: 6.2800e-04
+Epoch 176/300
+ - 5s - loss: 2.6255e-04 - mean_squared_error: 2.6255e-04 - val_loss: 7.0523e-04 - val_mean_squared_error: 7.0523e-04
+Epoch 177/300
+ - 5s - loss: 2.4432e-04 - mean_squared_error: 2.4432e-04 - val_loss: 3.8916e-04 - val_mean_squared_error: 3.8916e-04
+Epoch 178/300
+ - 5s - loss: 2.4165e-04 - mean_squared_error: 2.4165e-04 - val_loss: 4.7713e-04 - val_mean_squared_error: 4.7713e-04
+Epoch 179/300
+ - 5s - loss: 2.3747e-04 - mean_squared_error: 2.3747e-04 - val_loss: 7.4286e-04 - val_mean_squared_error: 7.4286e-04
+Epoch 180/300
+ - 5s - loss: 2.4808e-04 - mean_squared_error: 2.4808e-04 - val_loss: 3.7701e-04 - val_mean_squared_error: 3.7701e-04
+
+Epoch 00180: saving model to ./tmp/weights_180-0.00.h5
+Epoch 181/300
+ - 5s - loss: 2.5885e-04 - mean_squared_error: 2.5885e-04 - val_loss: 3.1150e-04 - val_mean_squared_error: 3.1150e-04
+Epoch 182/300
+ - 5s - loss: 2.1418e-04 - mean_squared_error: 2.1418e-04 - val_loss: 5.4304e-04 - val_mean_squared_error: 5.4304e-04
+Epoch 183/300
+ - 5s - loss: 2.3569e-04 - mean_squared_error: 2.3569e-04 - val_loss: 1.8112e-04 - val_mean_squared_error: 1.8112e-04
+Epoch 184/300
+ - 6s - loss: 2.3461e-04 - mean_squared_error: 2.3461e-04 - val_loss: 3.0407e-04 - val_mean_squared_error: 3.0407e-04
+Epoch 185/300
+ - 6s - loss: 2.4473e-04 - mean_squared_error: 2.4473e-04 - val_loss: 3.4728e-04 - val_mean_squared_error: 3.4728e-04
+Epoch 186/300
+ - 6s - loss: 2.8337e-04 - mean_squared_error: 2.8337e-04 - val_loss: 3.5940e-04 - val_mean_squared_error: 3.5940e-04
+Epoch 187/300
+ - 6s - loss: 2.7299e-04 - mean_squared_error: 2.7299e-04 - val_loss: 4.7729e-04 - val_mean_squared_error: 4.7729e-04
+Epoch 188/300
+ - 6s - loss: 2.7315e-04 - mean_squared_error: 2.7315e-04 - val_loss: 0.0025 - val_mean_squared_error: 0.0025
+Epoch 189/300
+ - 6s - loss: 2.3717e-04 - mean_squared_error: 2.3717e-04 - val_loss: 3.6309e-04 - val_mean_squared_error: 3.6309e-04
+Epoch 190/300
+ - 6s - loss: 2.4724e-04 - mean_squared_error: 2.4724e-04 - val_loss: 5.0190e-04 - val_mean_squared_error: 5.0190e-04
+
+Epoch 00190: saving model to ./tmp/weights_190-0.00.h5
+Epoch 191/300
+ - 6s - loss: 2.1256e-04 - mean_squared_error: 2.1256e-04 - val_loss: 2.4748e-04 - val_mean_squared_error: 2.4748e-04
+Epoch 192/300
+ - 6s - loss: 3.8744e-04 - mean_squared_error: 3.8744e-04 - val_loss: 0.0087 - val_mean_squared_error: 0.0087
+Epoch 193/300
+ - 5s - loss: 2.6366e-04 - mean_squared_error: 2.6366e-04 - val_loss: 0.0015 - val_mean_squared_error: 0.0015
+Epoch 194/300
+ - 5s - loss: 2.2589e-04 - mean_squared_error: 2.2589e-04 - val_loss: 9.6733e-04 - val_mean_squared_error: 9.6733e-04
+Epoch 195/300
+ - 5s - loss: 2.1570e-04 - mean_squared_error: 2.1570e-04 - val_loss: 6.5774e-04 - val_mean_squared_error: 6.5774e-04
+Epoch 196/300
+ - 5s - loss: 2.0202e-04 - mean_squared_error: 2.0202e-04 - val_loss: 7.4517e-04 - val_mean_squared_error: 7.4517e-04
+Epoch 197/300
+ - 5s - loss: 2.2516e-04 - mean_squared_error: 2.2516e-04 - val_loss: 2.9575e-04 - val_mean_squared_error: 2.9575e-04
+Epoch 198/300
+ - 5s - loss: 2.6251e-04 - mean_squared_error: 2.6251e-04 - val_loss: 5.2592e-04 - val_mean_squared_error: 5.2592e-04
+Epoch 199/300
+ - 5s - loss: 2.2448e-04 - mean_squared_error: 2.2448e-04 - val_loss: 4.5076e-04 - val_mean_squared_error: 4.5076e-04
+Epoch 200/300
+ - 5s - loss: 2.6700e-04 - mean_squared_error: 2.6700e-04 - val_loss: 4.4297e-04 - val_mean_squared_error: 4.4297e-04
+
+Epoch 00200: saving model to ./tmp/weights_200-0.00.h5
+Epoch 201/300
+ - 5s - loss: 2.6327e-04 - mean_squared_error: 2.6327e-04 - val_loss: 3.7953e-04 - val_mean_squared_error: 3.7953e-04
+Epoch 202/300
+ - 5s - loss: 2.3048e-04 - mean_squared_error: 2.3048e-04 - val_loss: 4.7975e-04 - val_mean_squared_error: 4.7975e-04
+Epoch 203/300
+ - 5s - loss: 2.1689e-04 - mean_squared_error: 2.1689e-04 - val_loss: 7.7859e-04 - val_mean_squared_error: 7.7859e-04
+Epoch 204/300
+ - 5s - loss: 2.1624e-04 - mean_squared_error: 2.1624e-04 - val_loss: 5.2800e-04 - val_mean_squared_error: 5.2800e-04
+Epoch 205/300
+ - 5s - loss: 2.2389e-04 - mean_squared_error: 2.2389e-04 - val_loss: 3.1537e-04 - val_mean_squared_error: 3.1537e-04
+Epoch 206/300
+ - 5s - loss: 2.2201e-04 - mean_squared_error: 2.2201e-04 - val_loss: 4.2456e-04 - val_mean_squared_error: 4.2456e-04
+Epoch 207/300
+ - 6s - loss: 2.5317e-04 - mean_squared_error: 2.5317e-04 - val_loss: 2.6584e-04 - val_mean_squared_error: 2.6584e-04
+Epoch 208/300
+ - 6s - loss: 2.1970e-04 - mean_squared_error: 2.1970e-04 - val_loss: 3.7046e-04 - val_mean_squared_error: 3.7046e-04
+Epoch 209/300
+ - 6s - loss: 2.1377e-04 - mean_squared_error: 2.1377e-04 - val_loss: 5.0128e-04 - val_mean_squared_error: 5.0128e-04
+Epoch 210/300
+ - 6s - loss: 2.0772e-04 - mean_squared_error: 2.0772e-04 - val_loss: 4.3554e-04 - val_mean_squared_error: 4.3554e-04
+
+Epoch 00210: saving model to ./tmp/weights_210-0.00.h5
+Epoch 211/300
+ - 6s - loss: 2.1751e-04 - mean_squared_error: 2.1751e-04 - val_loss: 3.2332e-04 - val_mean_squared_error: 3.2332e-04
+Epoch 212/300
+ - 6s - loss: 2.3452e-04 - mean_squared_error: 2.3452e-04 - val_loss: 2.8579e-04 - val_mean_squared_error: 2.8579e-04
+Epoch 213/300
+ - 6s - loss: 2.9280e-04 - mean_squared_error: 2.9280e-04 - val_loss: 9.6837e-04 - val_mean_squared_error: 9.6837e-04
+Epoch 214/300
+ - 6s - loss: 2.4477e-04 - mean_squared_error: 2.4477e-04 - val_loss: 5.9270e-04 - val_mean_squared_error: 5.9270e-04
+Epoch 215/300
+ - 6s - loss: 2.0543e-04 - mean_squared_error: 2.0543e-04 - val_loss: 3.5300e-04 - val_mean_squared_error: 3.5300e-04
+Epoch 216/300
+ - 5s - loss: 2.2271e-04 - mean_squared_error: 2.2271e-04 - val_loss: 4.9592e-04 - val_mean_squared_error: 4.9592e-04
+Epoch 217/300
+ - 6s - loss: 1.8015e-04 - mean_squared_error: 1.8015e-04 - val_loss: 2.7225e-04 - val_mean_squared_error: 2.7225e-04
+Epoch 218/300
+ - 6s - loss: 2.1984e-04 - mean_squared_error: 2.1984e-04 - val_loss: 5.4445e-04 - val_mean_squared_error: 5.4445e-04
+Epoch 219/300
+ - 6s - loss: 2.0561e-04 - mean_squared_error: 2.0561e-04 - val_loss: 7.3991e-04 - val_mean_squared_error: 7.3991e-04
+Epoch 220/300
+ - 6s - loss: 1.8065e-04 - mean_squared_error: 1.8065e-04 - val_loss: 4.1956e-04 - val_mean_squared_error: 4.1956e-04
+
+Epoch 00220: saving model to ./tmp/weights_220-0.00.h5
+Epoch 221/300
+ - 6s - loss: 2.2204e-04 - mean_squared_error: 2.2204e-04 - val_loss: 7.6702e-04 - val_mean_squared_error: 7.6702e-04
+Epoch 222/300
+ - 6s - loss: 2.3652e-04 - mean_squared_error: 2.3652e-04 - val_loss: 3.2287e-04 - val_mean_squared_error: 3.2287e-04
+Epoch 223/300
+ - 6s - loss: 2.1686e-04 - mean_squared_error: 2.1686e-04 - val_loss: 7.5264e-04 - val_mean_squared_error: 7.5264e-04
+Epoch 224/300
+ - 6s - loss: 2.3843e-04 - mean_squared_error: 2.3843e-04 - val_loss: 3.4347e-04 - val_mean_squared_error: 3.4347e-04
+Epoch 225/300
+ - 6s - loss: 8.6373e-04 - mean_squared_error: 8.6373e-04 - val_loss: 26.8900 - val_mean_squared_error: 26.8900
+Epoch 226/300
+ - 6s - loss: 0.0014 - mean_squared_error: 0.0014 - val_loss: 0.1300 - val_mean_squared_error: 0.1300
+Epoch 227/300
+ - 6s - loss: 3.9351e-04 - mean_squared_error: 3.9351e-04 - val_loss: 0.0132 - val_mean_squared_error: 0.0132
+Epoch 228/300
+ - 5s - loss: 3.3657e-04 - mean_squared_error: 3.3657e-04 - val_loss: 0.0059 - val_mean_squared_error: 0.0059
+Epoch 229/300
+ - 6s - loss: 3.0410e-04 - mean_squared_error: 3.0410e-04 - val_loss: 0.0030 - val_mean_squared_error: 0.0030
+Epoch 230/300
+ - 5s - loss: 3.5278e-04 - mean_squared_error: 3.5278e-04 - val_loss: 0.0019 - val_mean_squared_error: 0.0019
+
+Epoch 00230: saving model to ./tmp/weights_230-0.00.h5
+Epoch 231/300
+ - 5s - loss: 2.6281e-04 - mean_squared_error: 2.6281e-04 - val_loss: 9.3628e-04 - val_mean_squared_error: 9.3628e-04
+Epoch 232/300
+ - 5s - loss: 2.7471e-04 - mean_squared_error: 2.7471e-04 - val_loss: 5.6027e-04 - val_mean_squared_error: 5.6027e-04
+Epoch 233/300
+ - 5s - loss: 2.7130e-04 - mean_squared_error: 2.7130e-04 - val_loss: 5.9591e-04 - val_mean_squared_error: 5.9591e-04
+Epoch 234/300
+ - 5s - loss: 2.3667e-04 - mean_squared_error: 2.3667e-04 - val_loss: 4.1470e-04 - val_mean_squared_error: 4.1470e-04
+Epoch 235/300
+ - 5s - loss: 2.7649e-04 - mean_squared_error: 2.7649e-04 - val_loss: 6.5568e-04 - val_mean_squared_error: 6.5568e-04
+Epoch 236/300
+ - 5s - loss: 2.6293e-04 - mean_squared_error: 2.6293e-04 - val_loss: 4.5436e-04 - val_mean_squared_error: 4.5436e-04
+Epoch 237/300
+ - 5s - loss: 2.5203e-04 - mean_squared_error: 2.5203e-04 - val_loss: 2.9518e-04 - val_mean_squared_error: 2.9518e-04
+Epoch 238/300
+ - 5s - loss: 2.2703e-04 - mean_squared_error: 2.2703e-04 - val_loss: 4.3847e-04 - val_mean_squared_error: 4.3847e-04
+Epoch 239/300
+ - 5s - loss: 2.5827e-04 - mean_squared_error: 2.5827e-04 - val_loss: 2.7425e-04 - val_mean_squared_error: 2.7425e-04
+Epoch 240/300
+ - 5s - loss: 2.3485e-04 - mean_squared_error: 2.3485e-04 - val_loss: 1.8870e-04 - val_mean_squared_error: 1.8870e-04
+
+Epoch 00240: saving model to ./tmp/weights_240-0.00.h5
+Epoch 241/300
+ - 6s - loss: 2.3366e-04 - mean_squared_error: 2.3366e-04 - val_loss: 3.7069e-04 - val_mean_squared_error: 3.7069e-04
+Epoch 242/300
+ - 6s - loss: 2.3108e-04 - mean_squared_error: 2.3108e-04 - val_loss: 3.4654e-04 - val_mean_squared_error: 3.4654e-04
+Epoch 243/300
+ - 6s - loss: 1.9437e-04 - mean_squared_error: 1.9437e-04 - val_loss: 1.7225e-04 - val_mean_squared_error: 1.7225e-04
+Epoch 244/300
+ - 6s - loss: 2.2429e-04 - mean_squared_error: 2.2429e-04 - val_loss: 2.4025e-04 - val_mean_squared_error: 2.4025e-04
+Epoch 245/300
+ - 6s - loss: 2.2099e-04 - mean_squared_error: 2.2099e-04 - val_loss: 2.0486e-04 - val_mean_squared_error: 2.0486e-04
+Epoch 246/300
+ - 6s - loss: 2.1192e-04 - mean_squared_error: 2.1192e-04 - val_loss: 3.1732e-04 - val_mean_squared_error: 3.1732e-04
+Epoch 247/300
+ - 6s - loss: 1.8252e-04 - mean_squared_error: 1.8252e-04 - val_loss: 2.6286e-04 - val_mean_squared_error: 2.6286e-04
+Epoch 248/300
+ - 6s - loss: 2.1095e-04 - mean_squared_error: 2.1095e-04 - val_loss: 2.1719e-04 - val_mean_squared_error: 2.1719e-04
+Epoch 249/300
+ - 6s - loss: 2.1012e-04 - mean_squared_error: 2.1012e-04 - val_loss: 1.3937e-04 - val_mean_squared_error: 1.3937e-04
+Epoch 250/300
+ - 6s - loss: 2.3143e-04 - mean_squared_error: 2.3143e-04 - val_loss: 4.6145e-04 - val_mean_squared_error: 4.6146e-04
+
+Epoch 00250: saving model to ./tmp/weights_250-0.00.h5
+Epoch 251/300
+ - 6s - loss: 2.1986e-04 - mean_squared_error: 2.1986e-04 - val_loss: 3.6793e-04 - val_mean_squared_error: 3.6793e-04
+Epoch 252/300
+ - 6s - loss: 3.5991e-04 - mean_squared_error: 3.5991e-04 - val_loss: 9.0147e-04 - val_mean_squared_error: 9.0147e-04
+Epoch 253/300
+ - 6s - loss: 2.4372e-04 - mean_squared_error: 2.4372e-04 - val_loss: 4.2089e-04 - val_mean_squared_error: 4.2089e-04
+Epoch 254/300
+ - 6s - loss: 2.2759e-04 - mean_squared_error: 2.2759e-04 - val_loss: 3.4891e-04 - val_mean_squared_error: 3.4891e-04
+Epoch 255/300
+ - 6s - loss: 2.2130e-04 - mean_squared_error: 2.2130e-04 - val_loss: 3.4507e-04 - val_mean_squared_error: 3.4507e-04
+Epoch 256/300
+ - 6s - loss: 2.7791e-04 - mean_squared_error: 2.7791e-04 - val_loss: 6.1767e-04 - val_mean_squared_error: 6.1767e-04
+Epoch 257/300
+ - 6s - loss: 2.0000e-04 - mean_squared_error: 2.0000e-04 - val_loss: 3.7831e-04 - val_mean_squared_error: 3.7831e-04
+Epoch 258/300
+ - 6s - loss: 2.0238e-04 - mean_squared_error: 2.0238e-04 - val_loss: 3.0499e-04 - val_mean_squared_error: 3.0499e-04
+Epoch 259/300
+ - 6s - loss: 2.2980e-04 - mean_squared_error: 2.2980e-04 - val_loss: 2.2377e-04 - val_mean_squared_error: 2.2377e-04
+Epoch 260/300
+ - 6s - loss: 2.0274e-04 - mean_squared_error: 2.0274e-04 - val_loss: 4.2232e-04 - val_mean_squared_error: 4.2232e-04
+
+Epoch 00260: saving model to ./tmp/weights_260-0.00.h5
+Epoch 261/300
+ - 6s - loss: 1.8847e-04 - mean_squared_error: 1.8847e-04 - val_loss: 3.2952e-04 - val_mean_squared_error: 3.2952e-04
+Epoch 262/300
+ - 6s - loss: 1.9099e-04 - mean_squared_error: 1.9099e-04 - val_loss: 2.5235e-04 - val_mean_squared_error: 2.5235e-04
+Epoch 263/300
+ - 6s - loss: 2.1300e-04 - mean_squared_error: 2.1300e-04 - val_loss: 3.5323e-04 - val_mean_squared_error: 3.5323e-04
+Epoch 264/300
+ - 6s - loss: 2.2010e-04 - mean_squared_error: 2.2010e-04 - val_loss: 2.0770e-04 - val_mean_squared_error: 2.0770e-04
+Epoch 265/300
+ - 6s - loss: 2.1903e-04 - mean_squared_error: 2.1903e-04 - val_loss: 2.8180e-04 - val_mean_squared_error: 2.8180e-04
+Epoch 266/300
+ - 6s - loss: 2.2368e-04 - mean_squared_error: 2.2368e-04 - val_loss: 3.9196e-04 - val_mean_squared_error: 3.9196e-04
+Epoch 267/300
+ - 6s - loss: 1.8346e-04 - mean_squared_error: 1.8346e-04 - val_loss: 2.8815e-04 - val_mean_squared_error: 2.8815e-04
+Epoch 268/300
+ - 6s - loss: 1.9898e-04 - mean_squared_error: 1.9898e-04 - val_loss: 2.0881e-04 - val_mean_squared_error: 2.0881e-04
+Epoch 269/300
+ - 5s - loss: 1.9723e-04 - mean_squared_error: 1.9723e-04 - val_loss: 2.0290e-04 - val_mean_squared_error: 2.0290e-04
+Epoch 270/300
+ - 6s - loss: 1.9573e-04 - mean_squared_error: 1.9573e-04 - val_loss: 1.9823e-04 - val_mean_squared_error: 1.9823e-04
+
+Epoch 00270: saving model to ./tmp/weights_270-0.00.h5
+Epoch 271/300
+ - 6s - loss: 2.0626e-04 - mean_squared_error: 2.0626e-04 - val_loss: 2.0628e-04 - val_mean_squared_error: 2.0628e-04
+Epoch 272/300
+ - 6s - loss: 2.2525e-04 - mean_squared_error: 2.2525e-04 - val_loss: 2.6163e-04 - val_mean_squared_error: 2.6163e-04
+Epoch 273/300
+ - 6s - loss: 1.9106e-04 - mean_squared_error: 1.9106e-04 - val_loss: 1.8927e-04 - val_mean_squared_error: 1.8927e-04
+Epoch 274/300
+ - 6s - loss: 1.9216e-04 - mean_squared_error: 1.9216e-04 - val_loss: 2.9231e-04 - val_mean_squared_error: 2.9231e-04
+Epoch 275/300
+ - 6s - loss: 2.1491e-04 - mean_squared_error: 2.1491e-04 - val_loss: 3.2003e-04 - val_mean_squared_error: 3.2003e-04
+Epoch 276/300
+ - 6s - loss: 1.8057e-04 - mean_squared_error: 1.8057e-04 - val_loss: 2.6188e-04 - val_mean_squared_error: 2.6188e-04
+Epoch 277/300
+ - 6s - loss: 1.8903e-04 - mean_squared_error: 1.8903e-04 - val_loss: 2.8455e-04 - val_mean_squared_error: 2.8455e-04
+Epoch 278/300
+ - 6s - loss: 2.1369e-04 - mean_squared_error: 2.1369e-04 - val_loss: 2.1619e-04 - val_mean_squared_error: 2.1619e-04
+Epoch 279/300
+ - 6s - loss: 2.3778e-04 - mean_squared_error: 2.3778e-04 - val_loss: 5.5185e-04 - val_mean_squared_error: 5.5185e-04
+Epoch 280/300
+ - 6s - loss: 1.8804e-04 - mean_squared_error: 1.8804e-04 - val_loss: 3.8176e-04 - val_mean_squared_error: 3.8176e-04
+
+Epoch 00280: saving model to ./tmp/weights_280-0.00.h5
+Epoch 281/300
+ - 6s - loss: 2.0620e-04 - mean_squared_error: 2.0620e-04 - val_loss: 1.3562e-04 - val_mean_squared_error: 1.3562e-04
+Epoch 282/300
+ - 6s - loss: 2.1032e-04 - mean_squared_error: 2.1032e-04 - val_loss: 3.8924e-04 - val_mean_squared_error: 3.8924e-04
+Epoch 283/300
+ - 6s - loss: 2.0824e-04 - mean_squared_error: 2.0824e-04 - val_loss: 2.3315e-04 - val_mean_squared_error: 2.3315e-04
+Epoch 284/300
+ - 6s - loss: 1.9026e-04 - mean_squared_error: 1.9026e-04 - val_loss: 3.0960e-04 - val_mean_squared_error: 3.0960e-04
+Epoch 285/300
+ - 6s - loss: 2.1961e-04 - mean_squared_error: 2.1961e-04 - val_loss: 3.3229e-04 - val_mean_squared_error: 3.3229e-04
+Epoch 286/300
+ - 6s - loss: 2.0134e-04 - mean_squared_error: 2.0134e-04 - val_loss: 3.6560e-04 - val_mean_squared_error: 3.6560e-04
+Epoch 287/300
+ - 6s - loss: 2.0559e-04 - mean_squared_error: 2.0559e-04 - val_loss: 3.1275e-04 - val_mean_squared_error: 3.1275e-04
+Epoch 288/300
+ - 6s - loss: 1.8879e-04 - mean_squared_error: 1.8879e-04 - val_loss: 4.6402e-04 - val_mean_squared_error: 4.6402e-04
+Epoch 289/300
+ - 6s - loss: 2.2036e-04 - mean_squared_error: 2.2036e-04 - val_loss: 0.0011 - val_mean_squared_error: 0.0011
+Epoch 290/300
+ - 6s - loss: 1.9523e-04 - mean_squared_error: 1.9523e-04 - val_loss: 1.0781e-04 - val_mean_squared_error: 1.0781e-04
+
+Epoch 00290: saving model to ./tmp/weights_290-0.00.h5
+Epoch 291/300
+ - 6s - loss: 1.7332e-04 - mean_squared_error: 1.7332e-04 - val_loss: 1.1661e-04 - val_mean_squared_error: 1.1661e-04
+Epoch 292/300
+ - 6s - loss: 2.0365e-04 - mean_squared_error: 2.0365e-04 - val_loss: 1.8045e-04 - val_mean_squared_error: 1.8045e-04
+Epoch 293/300
+ - 6s - loss: 1.6677e-04 - mean_squared_error: 1.6677e-04 - val_loss: 2.8643e-04 - val_mean_squared_error: 2.8643e-04
+Epoch 294/300
+ - 6s - loss: 1.7260e-04 - mean_squared_error: 1.7260e-04 - val_loss: 2.0587e-04 - val_mean_squared_error: 2.0587e-04
+Epoch 295/300
+ - 6s - loss: 1.9216e-04 - mean_squared_error: 1.9216e-04 - val_loss: 2.1359e-04 - val_mean_squared_error: 2.1359e-04
+Epoch 296/300
+ - 6s - loss: 1.7609e-04 - mean_squared_error: 1.7609e-04 - val_loss: 1.3895e-04 - val_mean_squared_error: 1.3895e-04
+Epoch 297/300
+ - 6s - loss: 2.4341e-04 - mean_squared_error: 2.4341e-04 - val_loss: 0.0011 - val_mean_squared_error: 0.0011
+Epoch 298/300
+ - 6s - loss: 2.1823e-04 - mean_squared_error: 2.1823e-04 - val_loss: 2.0855e-04 - val_mean_squared_error: 2.0855e-04
+Epoch 299/300
+ - 6s - loss: 1.8537e-04 - mean_squared_error: 1.8537e-04 - val_loss: 2.3133e-04 - val_mean_squared_error: 2.3133e-04
+Epoch 300/300
+ - 6s - loss: 1.8747e-04 - mean_squared_error: 1.8747e-04 - val_loss: 2.4112e-04 - val_mean_squared_error: 2.4112e-04
+
+Epoch 00300: saving model to ./tmp/weights_300-0.00.h5
+===>Test set BER  1.4761904761904761e-05
