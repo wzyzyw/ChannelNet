@@ -80,24 +80,27 @@ def generateEncodeData(args,mode,turbo):
 		count=batchnum/len(snrlist)
 	else:
 		raise Exception("error add noise mode!")
+	newlen=args.block_len+args.remainlen
+	newn=args.code_rate_n+args.remainn
 	X=np.zeros((batchnum,args.block_len,args.code_rate_k))
-	X_train=np.zeros((batchnum,args.block_len,args.code_rate_n))
-	noise_shape = (args.block_len, args.code_rate_n)
-	fwd_noise=np.zeros((batchnum,args.block_len,args.code_rate_n))
-	noisemap=np.ones((batchnum, args.block_len, 1))
+	X_train=np.zeros((batchnum,newlen,newn))
+	noise_shape = (newlen, newn)
+	fwd_noise=np.zeros((batchnum,newlen,newn))
+	noisemap=np.ones((batchnum, newlen, 1))
 	for idx_batch in range(batchnum):
 		if idx_batch%count==0:
 			this_sigma=sigmalist.pop(0)
 			this_snr=snrlist.pop(0)
+			this_sigma=this_snr
 			# print("batch_idx=",idx_batch,"noise sigma=",this_sigma,"this_snr=",this_snr)
 		tmp=np.random.randint(0,2,(args.block_len,args.code_rate_k))
 		X[idx_batch,:,:]=tmp
 		tmp=np.array(tmp,dtype="float64")
 		encodedata=turbo.encoder(tmp)
-		for i in range(args.code_rate_n):
+		for i in range(newn):
 			X_train[idx_batch,:,i]=encodedata[i]
 		fwd_noise[idx_batch,:,:]= generate_noise(noise_shape, args, this_sigma)
-		noisemap[idx_batch,:,:]=this_sigma*np.ones((args.block_len,1))
+		noisemap[idx_batch,:,:]=this_sigma*np.ones((newlen,1))
 	codes=X_train
 	# BPSK 
 	codes=codes*2-1
@@ -112,20 +115,22 @@ def generateEncodeData_test(args,mode,turbo,this_sigma):
 		batchnum=args.num_block
 	elif mode=="test":
 		batchnum=args.num_test_block
+	newlen=args.block_len+args.remainlen
+	newn=args.code_rate_n+args.remainn
 	X=np.zeros((batchnum,args.block_len,args.code_rate_k))
-	X_train=np.zeros((batchnum,args.block_len,args.code_rate_n))
-	noise_shape = (args.block_len, args.code_rate_n)
-	fwd_noise=np.zeros((batchnum,args.block_len,args.code_rate_n))
-	noisemap=np.ones((batchnum, args.block_len, 1))
+	X_train=np.zeros((batchnum,newlen,newn))
+	noise_shape = (newlen, newn)
+	fwd_noise=np.zeros((batchnum,newlen,newn))
+	noisemap=np.ones((batchnum, newlen, 1))
 	for idx_batch in range(batchnum):
 		tmp=np.random.randint(0,2,(args.block_len,args.code_rate_k))
 		X[idx_batch,:,:]=tmp
 		tmp=np.array(tmp,dtype="float64")
 		encodedata=turbo.encoder(tmp)
-		for i in range(args.code_rate_n):
+		for i in range(newn):
 			X_train[idx_batch,:,i]=encodedata[i]
 		fwd_noise[idx_batch,:,:]= generate_noise(noise_shape, args, this_sigma)
-		noisemap[idx_batch,:,:]=this_sigma*np.ones((args.block_len,1))
+		noisemap[idx_batch,:,:]=this_sigma*np.ones((newlen,1))
 	codes=X_train
 	# BPSK 
 	codes=codes*2-1

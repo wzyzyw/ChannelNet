@@ -41,19 +41,22 @@ if __name__=='__main__':
 
     if args.dec_alg=="pythonturbo":
         myturbo=turbo(args)
+    elif args.dec_alg=="matlabturbo1":
+        myturbo=matlabturbo(args)
     elif args.dec_alg=="matlabturbo2":
-        myturbo=classicalturbo()
+        myturbo=classicalturbo(args)
     else:
         raise Exception("error turbo!!!")
     identity=333827
     sigmalist,snrlist=getnoisesigma(args.snr_test_start,args.snr_test_end,interval=args.snr_interval,mode=args.add_mode)
     bers=[]
+    newn=args.code_rate_n+args.remainn
     for sigma,snr in zip(sigmalist,snrlist):
         print("current snr=",snr)
         X_test_data,test_input,test_noise=generateEncodeData_test(args,'test',myturbo,sigma)
-        test_label=test_input[:,:,:3]-test_noise
+        test_label=test_input[:,:,:newn]-test_noise
         test_output=DNCNN_predict(args,test_input,args.channel,identity)
-        denoisesig=test_input[:,:,:3]-test_output
+        denoisesig=test_input[:,:,:newn]-test_output
         # denoisesig=test_input
         # # channel decode
         # test_label_decodebits=channeldecode(args,myturbo,test_label,'test')

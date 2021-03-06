@@ -30,7 +30,7 @@ class turbo():
         tmp=dturbo.hazzys_g_turbo_decode(sys_r, par1_r, par2_r, self.trellis1,snr, self.args.num_iteration , self.interleaver, L_int = None)
         tmp=tmp.reshape((-1,1))
         return tmp
-    def interleaver(self,length):
+    def interleaverfunc(self,length):
         random.seed(10)
         tmp=random.sample(range(1,int(length)+1),int(length))
         interleaverindex=np.array(tmp,dtype="float64").reshape((1,-1))
@@ -53,12 +53,14 @@ class classicalturbo(turbo):
         self._puncture=0.0
         self._mydecalg='logmap'
         self._coderate=1/(2+self._puncture)
+    
     def encoder(self,x):
         L_total=x.shape[0]+self._m
-        self.interleaverindex=self.interleaver(L_total)
+        self.interleaverindex=self.interleaverfunc(L_total)
         tmp=self._matlabinter.classicalturboencode(x,self._g,self.interleaverindex,self._puncture)
-        par1=tmp[:self._info.block_len,0]
-        par2=tmp[self._info.block_len:,0]
+        newlen=self._info.block_len+self._info.remainlen
+        par1=tmp[:newlen,0]
+        par2=tmp[newlen:,0]
         return (par1,par2)
 
     def decoder(self,r,snr):
@@ -69,13 +71,19 @@ class classicalturbo(turbo):
         return tmp
 # matlab自带的turbo码有bug，编码前后长度不是整数倍
 class matlabturbo(turbo):
-    def __init__(self,msglen):
-        self.interleaverindex=self.interleaver(msglen)
+    def __init__(self,args):
+        super().__init__(args)
+        self.args=args
+        self.interleaverindex=self.interleaverfunc(args.block_len)
         self._matlabinter=Cmatlab()
     def encoder(self,x):
         tmp=self._matlabinter.turboencode(x,self.interleaverindex)
-        par1=tmp[:]
-        return tmp
+        newlen=self.args.block_len+self.args.remainlen
+        par1=tmp[:newlen,0]
+        par2=tmp[newlen:2*newlen,0]
+        par3=tmp[2*newlen:3*newlen,0]
+        par4=tmp[3*newlen:,0]
+        return (par1,par2,par3,par4)
     def decoder(self,y,snr):
         tmp=self._matlabinter.turbodecode(y,self.interleaverindex)
         return tmp  

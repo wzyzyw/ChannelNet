@@ -13,7 +13,7 @@ class SingletonMeta(type):
         return cls._instances[cls]
 class Cmatlab(metaclass=SingletonMeta):
     def __init__(self):
-        self.__matlab = transplant.Matlab(executable="E:/matlab/bin/matlab.exe",jvm=False, desktop=True)
+        self.__matlab = transplant.Matlab(executable="D:/matlab2018/bin/matlab.exe",jvm=False, desktop=True)
     def close(self):
         self.__matlab.exit
     def modulate(self,modtype,msgint):

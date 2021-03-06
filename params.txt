@@ -1,6 +1,6 @@
 1.matlab1(matlab自带turbo编码)
-码率5，code_rate_n=5,block_len=98
+码率5，code_rate_n=5,block_len=98,remainlen=29,remainn=-1
 2.matlab2
-punctture=0,码率为2，code_rate_n=2,block_len=126
+punctture=0,码率为2，code_rate_n=2,block_len=126,remainlen=2,remainn=0
 3.pythonturbo
-码率3，code_rate_n=3,block_len=100
+码率3，code_rate_n=3,block_len=100,remainlen=0,remainn=0

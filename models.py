@@ -63,7 +63,9 @@ def DNCNN_model (args):
         myloss=enhancedloss
     else:
         myloss='mean_squared_error' 
-    input_shape = (args.block_len, args.code_rate_n+1 if args.use_noisemap else args.code_rate_n)
+    newlen=args.block_len+args.remainlen
+    newn=args.code_rate_n+args.remainn
+    input_shape = (newlen, newn+1 if args.use_noisemap else newn)
     inpt = Input(shape=input_shape)
     # 1st layer, Conv+relu
     x = Conv1D(filters=64, kernel_size=args.kernel_size, strides=1,padding='same')(inpt)
@@ -74,7 +76,7 @@ def DNCNN_model (args):
         x = BatchNormalization(axis=-1, epsilon=1e-3)(x)
         x = Activation('relu')(x)   
     # last layer, Conv
-    x = Conv1D(filters=args.code_rate_n, kernel_size=args.kernel_size, strides=1, padding='same')(x)
+    x = Conv1D(filters=newn, kernel_size=args.kernel_size, strides=1, padding='same')(x)
     # x = Subtract()([inpt, x])   # input - noise
     model = Model(inputs=inpt, outputs=x)
     adam = Adam(lr=args.lr, beta_1=0.9, beta_2=0.999, epsilon=1e-8) 

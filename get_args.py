@@ -24,7 +24,7 @@ def get_args():
 
     # code rate is k/n, so that enable multiple code rates. This has to match the encoder/decoder nw structure.
     parser.add_argument('-code_rate_k', type=int, default=1)
-    parser.add_argument('-code_rate_n', type=int, default=3)
+    parser.add_argument('-code_rate_n', type=int, default=2)
 
     ################################################################
     # TurboAE encoder/decoder parameters
@@ -45,8 +45,8 @@ def get_args():
 
     parser.add_argument('-dropout',type=float, default=0.5)
     
-    parser.add_argument('-train_channel_low', type=float, default  = -5.0)
-    parser.add_argument('-train_channel_high', type=float, default =16.0)
+    parser.add_argument('-train_channel_low', type=float, default  = 15.0)
+    parser.add_argument('-train_channel_high', type=float, default =15.0)
     parser.add_argument('-snr_test_start', type=float, default=-5.0)
     parser.add_argument('-snr_test_end', type=float, default=16.0)
     parser.add_argument('-snr_points', type=int, default=9)
@@ -54,14 +54,15 @@ def get_args():
     parser.add_argument('-batch_size', type=int, default=100)
     parser.add_argument('-num_epoch', type=int, default=300)
     parser.add_argument('-test_ratio', type=int, default=1,help = 'only for high SNR testing')
-    parser.add_argument('-add_mode',type=str,default='sequence',help='generate random snr or sequence noise')
+    parser.add_argument('-add_mode',type=str,default='random',help='generate random snr or sequence noise')
     parser.add_argument('-snr_interval',type=int,default=5,help='sequence noise snr interval')
-    parser.add_argument('-use_noisemap',default=True,help='whether use noisemap as input data')
+    parser.add_argument('-use_noisemap',default=False,help='whether use noisemap as input data')
     parser.add_argument('-use_normaltest',default=False,help='whether use normal test as loss')
     # block length related
-    parser.add_argument('-dec_alg',type=str,default='pythonturbo',help="turbo decoder algorithm")
-    parser.add_argument('-block_len', type=int, default=100)
-
+    parser.add_argument('-dec_alg',type=str,default='matlabturbo2',help="turbo decoder algorithm")
+    parser.add_argument('-block_len', type=int, default=126)
+    parser.add_argument('-remainlen',type=int,default=2,help="matlab turbo remain length,if use python turbo,set it 0")
+    parser.add_argument('-remainn',type=int,default=0,help="matlab turbo remain n length,if not use,set it 0")
 
 
     parser.add_argument('-num_block', type=int, default=7000)
